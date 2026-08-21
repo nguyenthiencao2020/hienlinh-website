@@ -16,10 +16,11 @@ Next.js (App Router) + Supabase (DB/Storage/Auth làm CMS) + Vercel + GitHub.
 ## Cài đặt local
 
 1. Tạo project tại [supabase.com](https://supabase.com).
-2. Vào **SQL Editor**, chạy lần lượt các file trong `supabase/migrations/` (theo thứ tự số).
-3. Vào **Authentication → Users**, tạo tài khoản cho nhân sự sẽ quản trị nội dung (không mở đăng ký công khai).
-4. Copy `.env.example` thành `.env.local`, điền `NEXT_PUBLIC_SUPABASE_URL` và `NEXT_PUBLIC_SUPABASE_ANON_KEY` (Project Settings → API).
-5. Chạy:
+2. Vào **SQL Editor**, chạy lần lượt các file trong `supabase/migrations/` (theo thứ tự số) — file `0003` đã seed sẵn tên 10 cơ sở thực tế.
+3. Để điền nhanh địa chỉ/mô tả cho các cơ sở (không cần sửa từng cái qua form admin), điền nội dung thật vào `supabase/templates/fill_facilities_content.sql` rồi chạy trong SQL Editor — an toàn để chạy lại nhiều lần.
+4. Vào **Authentication → Users**, tạo tài khoản cho nhân sự sẽ quản trị nội dung (không mở đăng ký công khai).
+5. Copy `.env.example` thành `.env.local`, điền `NEXT_PUBLIC_SUPABASE_URL` và `NEXT_PUBLIC_SUPABASE_ANON_KEY` (Project Settings → API).
+6. Chạy:
 
    ```bash
    npm install

@@ -21,16 +21,11 @@ create policy "authenticated users manage facilities" on public.facilities
   for all using (auth.role() = 'authenticated') with check (auth.role() = 'authenticated');
 
 insert into public.facilities (slug, name, program_slug, sort_order) values
-  ('huynh-de-nhu-nghia', 'Cơ Sở Khiếm Thị Huynh Đệ Như Nghĩa', 'luu-tru', 1),
-  ('luu-xa-emmanuel', 'Lưu Xá Emmanuel', 'luu-tru', 2),
-  ('noi-tru-thanh-gia', 'Nội Trú Thánh Gia', 'luu-tru', 3),
-  ('noi-tru-thang-tien', 'Nội Trú Thăng Tiến', 'luu-tru', 4),
-  ('mam-non-hien-linh', 'Mầm Non Hiển Linh', 'giao-duc', 5),
-  ('mam-non-anh-sang', 'Mầm Non Ánh Sáng', 'giao-duc', 6),
-  ('mam-non-thien-ca', 'Mầm Non Thiên Ca', 'giao-duc', 7),
-  ('mam-non-son-ca', 'Mầm Non Sơn Ca', 'giao-duc', 8),
-  ('phong-kham-hy-vong', 'Phòng Khám Hy Vọng', 'y-te', 9),
-  ('phong-kham-suoi-thong', 'Phòng Khám Suối Thông', 'y-te', 10)
+  ('huynh-de-nhu-nghia', 'Mái Ấm Huynh Đệ Như Nghĩa', 'luu-tru', 1),
+  ('mam-non-anh-sang', 'Mầm Non Ánh Sáng', 'giao-duc', 2),
+  ('mam-non-hien-linh', 'Mầm Non Hiển Linh', 'giao-duc', 3),
+  ('noi-tru-thanh-gia', 'Nhà Nội Trú Thánh Gia', 'luu-tru', 4),
+  ('phong-kham-hy-vong', 'Phòng Khám Hy Vọng', 'y-te', 5)
 on conflict (slug) do nothing;
 
 -- Gắn cờ cho tab "Hoạt Động Nổi Bật" / "Câu Chuyện Thành Công" ở trang Tin Tức,

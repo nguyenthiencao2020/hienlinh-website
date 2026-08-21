@@ -100,8 +100,8 @@ export function SendIcon({ className }: { className?: string }) {
 
 export function HeartIcon({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
-      <path d="M12 21s-7.5-4.6-10-9.1C.4 8.8 2 5.5 5.4 5c2-.3 3.7.6 4.6 2.1C10.9 5.6 12.6 4.7 14.6 5c3.4.5 5 3.8 3.4 6.9C19.5 16.4 12 21 12 21Z" />
+    <svg viewBox="0 0 20 20" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M9.653 16.915a.75.75 0 0 1-.69 0c-.055-.03-.157-.086-.298-.166a20.759 20.759 0 0 1-3.744-2.582C3.045 12.733 1 10.352 1 7.5 1 4.921 3.021 3 5.5 3c1.759 0 3.09.986 3.5 1.94C9.409 3.986 10.741 3 12.5 3 14.979 3 17 4.921 17 7.5c0 2.852-2.044 5.233-3.921 6.667a20.759 20.759 0 0 1-3.744 2.582 6.703 6.703 0 0 1-.298.166Z" />
     </svg>
   );
 }
