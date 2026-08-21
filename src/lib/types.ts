@@ -31,6 +31,9 @@ export type ContactMessage = {
   email: string | null;
   phone: string | null;
   message: string | null;
+  interest: string | null;
+  donation_amount: number | null;
+  donation_frequency: "one_time" | "monthly" | null;
   status: "new" | "read" | "archived";
   created_at: string;
 };

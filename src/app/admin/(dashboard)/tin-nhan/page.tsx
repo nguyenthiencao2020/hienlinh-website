@@ -37,6 +37,18 @@ export default async function AdminMessagesPage() {
               <p className="text-xs text-zinc-500">
                 {[msg.email, msg.phone].filter(Boolean).join(" · ")}
               </p>
+              {msg.interest && (
+                <p className="mt-1 text-xs text-zinc-500">Quan tâm / Chủ đề: {msg.interest}</p>
+              )}
+              {msg.kind === "donation" && (
+                <p className="mt-1 text-xs text-zinc-500">
+                  {msg.donation_amount
+                    ? `${msg.donation_amount.toLocaleString("vi-VN")}đ`
+                    : "Chưa rõ số tiền"}{" "}
+                  ·{" "}
+                  {msg.donation_frequency === "monthly" ? "Định kỳ hàng tháng" : "Một lần"}
+                </p>
+              )}
               {msg.message && <p className="mt-2 text-sm text-zinc-700">{msg.message}</p>}
               <p className="mt-1 text-xs text-zinc-400">
                 {new Date(msg.created_at).toLocaleString("vi-VN")}

@@ -1,29 +1,31 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { submitContactMessage } from "./actions";
+import { submitVolunteer } from "./actions";
 
-export function ContactForm() {
+const AREAS = ["Giáo dục", "Y tế", "Lưu trú", "Tâm lý", "Thiện nguyện", "Khác"];
+
+export function VolunteerForm() {
   const [isPending, startTransition] = useTransition();
-  const [result, setResult] = useState<"idle" | "success" | "error">("idle");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [state, setState] = useState<"idle" | "success" | "error">("idle");
+  const [error, setError] = useState("");
 
   function handleSubmit(formData: FormData) {
     startTransition(async () => {
-      const res = await submitContactMessage(formData);
+      const res = await submitVolunteer(formData);
       if (res.ok) {
-        setResult("success");
+        setState("success");
       } else {
-        setResult("error");
-        setErrorMessage(res.error);
+        setState("error");
+        setError(res.error);
       }
     });
   }
 
-  if (result === "success") {
+  if (state === "success") {
     return (
       <div className="rounded-xl border border-green-200 bg-green-50 p-6 text-green-800">
-        Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất có thể.
+        Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ lại sớm nhất.
       </div>
     );
   }
@@ -46,25 +48,32 @@ export function ContactForm() {
         />
       </div>
       <input
-        name="subject"
+        name="phone"
         required
-        placeholder="Tiêu đề *"
+        placeholder="Điện thoại *"
         className="w-full rounded-lg border border-zinc-300 px-3 py-2"
       />
-      <textarea
-        name="message"
-        rows={5}
-        required
-        placeholder="Nội dung tin nhắn *"
-        className="w-full rounded-lg border border-zinc-300 px-3 py-2"
-      />
-      {result === "error" && <p className="text-sm text-red-600">{errorMessage}</p>}
+      <select
+        name="interest"
+        defaultValue=""
+        className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-zinc-700"
+      >
+        <option value="" disabled>
+          Chọn lĩnh vực bạn quan tâm
+        </option>
+        {AREAS.map((area) => (
+          <option key={area} value={area}>
+            {area}
+          </option>
+        ))}
+      </select>
+      {state === "error" && <p className="text-sm text-red-600">{error}</p>}
       <button
         type="submit"
         disabled={isPending}
         className="rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-white hover:bg-brand-orange-dark disabled:opacity-60"
       >
-        {isPending ? "Đang gửi..." : "Gửi"}
+        {isPending ? "Đang gửi..." : "Đăng ký ngay"}
       </button>
     </form>
   );

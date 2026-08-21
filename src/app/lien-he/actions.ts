@@ -7,28 +7,21 @@ export type SubmitMessageResult = { ok: true } | { ok: false; error: string };
 export async function submitContactMessage(
   formData: FormData,
 ): Promise<SubmitMessageResult> {
-  const kind = String(formData.get("kind") ?? "");
   const full_name = String(formData.get("full_name") ?? "").trim();
   const email = String(formData.get("email") ?? "").trim();
-  const phone = String(formData.get("phone") ?? "").trim();
+  const subject = String(formData.get("subject") ?? "").trim();
   const message = String(formData.get("message") ?? "").trim();
 
-  if (!["volunteer", "donation", "contact"].includes(kind)) {
-    return { ok: false, error: "Loại yêu cầu không hợp lệ." };
-  }
-  if (!full_name) {
-    return { ok: false, error: "Vui lòng nhập họ tên." };
-  }
-  if (!email && !phone) {
-    return { ok: false, error: "Vui lòng nhập email hoặc số điện thoại." };
+  if (!full_name || !email) {
+    return { ok: false, error: "Vui lòng nhập họ tên và email." };
   }
 
   const supabase = await createClient();
   const { error } = await supabase.from("contact_messages").insert({
-    kind,
+    kind: "contact",
     full_name,
-    email: email || null,
-    phone: phone || null,
+    email,
+    interest: subject || null,
     message: message || null,
   });
 
