@@ -21,8 +21,7 @@ export default function ContactPage() {
             <p className="mt-4 text-sm text-zinc-600">
               Mạng xã hội:{" "}
               <a href={SITE.socials.facebook} className="text-brand-orange">Facebook</a>,{" "}
-              <a href={SITE.socials.youtube} className="text-brand-orange">YouTube</a>,{" "}
-              <a href={SITE.socials.zalo} className="text-brand-orange">Zalo</a>
+              <a href={SITE.socials.youtube} className="text-brand-orange">YouTube</a>
             </p>
           </div>
           <div className="rounded-2xl border border-zinc-200 p-6">

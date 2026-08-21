@@ -12,13 +12,11 @@ import {
   MapPinIcon,
   PhoneIcon,
   YoutubeIcon,
-  ZaloIcon,
 } from "./icons";
 
 const SOCIALS = [
   { href: SITE.socials.facebook, label: "Facebook", Icon: FacebookIcon },
   { href: SITE.socials.youtube, label: "YouTube", Icon: YoutubeIcon },
-  { href: SITE.socials.zalo, label: "Zalo", Icon: ZaloIcon },
 ];
 
 export function SiteFooter() {

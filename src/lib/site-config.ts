@@ -5,7 +5,7 @@ export const SITE = {
   address: "Số 15, Đường Xanh, P. An Lạc, Q. Bình Tân, TP. Hồ Chí Minh",
   phone: "0901 234 567",
   email: "contact@hienlinh-fmm.org",
-  website: "www.hienlinh.org.vn",
+  website: "hienlinh-fmm.org",
   socials: {
     facebook: "https://facebook.com/hienlinh",
     youtube: "https://youtube.com/@hienlinh",
