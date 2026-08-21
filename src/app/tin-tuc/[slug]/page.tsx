@@ -34,7 +34,7 @@ export default async function NewsDetailPage({
         <article>
           <div className="flex items-center gap-3 text-sm text-zinc-500">
             {post.category && (
-              <span className="rounded-full bg-brand-cream px-3 py-1 font-semibold text-brand-orange">
+              <span className="rounded-full bg-brand-cream px-3 py-1 font-semibold text-brand-brown">
                 {post.category}
               </span>
             )}

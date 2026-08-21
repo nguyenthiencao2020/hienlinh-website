@@ -25,7 +25,7 @@ export default async function AdminMessagesPage() {
             <div>
               <p className="font-medium text-zinc-900">
                 {msg.full_name}{" "}
-                <span className="ml-2 rounded-full bg-amber-100 px-2 py-0.5 text-xs text-amber-800">
+                <span className="ml-2 rounded-full bg-brand-brown/10 px-2 py-0.5 text-xs text-brand-brown">
                   {KIND_LABEL[msg.kind]}
                 </span>
                 {msg.status === "new" && (
@@ -57,7 +57,7 @@ export default async function AdminMessagesPage() {
             <div className="flex shrink-0 flex-col items-end gap-2 text-sm">
               {msg.status !== "read" && (
                 <form action={markMessageStatus.bind(null, msg.id, "read")}>
-                  <button className="text-amber-800 underline" type="submit">
+                  <button className="text-brand-brown underline" type="submit">
                     Đánh dấu đã đọc
                   </button>
                 </form>

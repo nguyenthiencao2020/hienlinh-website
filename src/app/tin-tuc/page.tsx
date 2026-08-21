@@ -56,8 +56,8 @@ export default async function NewsListPage({
                 href={tab.value ? `/tin-tuc?loai=${tab.value}` : "/tin-tuc"}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
                   activeTab === tab.value
-                    ? "bg-brand-orange text-white shadow-sm"
-                    : "border border-zinc-200 text-zinc-600 hover:scale-105 hover:border-brand-orange/50"
+                    ? "bg-brand-brown text-white shadow-sm"
+                    : "border border-zinc-200 text-zinc-600 hover:scale-105 hover:border-brand-brown/50"
                 }`}
               >
                 {tab.label}
@@ -70,7 +70,7 @@ export default async function NewsListPage({
               <Reveal key={post.id} delay={i * 70}>
                 <Link
                   href={`/tin-tuc/${post.slug}`}
-                  className="group block overflow-hidden rounded-xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-orange/50 hover:shadow-xl"
+                  className="group block overflow-hidden rounded-xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-brown/50 hover:shadow-xl"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden bg-zinc-100">
                     {post.cover_image_url && (
@@ -93,7 +93,7 @@ export default async function NewsListPage({
                       {post.title}
                     </h2>
                     <p className="mt-2 text-sm text-zinc-600 line-clamp-2">{post.excerpt}</p>
-                    <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-brand-orange">
+                    <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-brand-brown">
                       Đọc tiếp
                       <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                     </span>
@@ -114,8 +114,8 @@ export default async function NewsListPage({
                   href={`/tin-tuc?page=${p}${activeTab ? `&loai=${activeTab}` : ""}`}
                   className={`rounded-full px-3 py-1.5 transition-all duration-300 ${
                     p === page
-                      ? "bg-brand-orange text-white"
-                      : "border border-zinc-200 text-zinc-600 hover:scale-105 hover:border-brand-orange/50"
+                      ? "bg-brand-brown text-white"
+                      : "border border-zinc-200 text-zinc-600 hover:scale-105 hover:border-brand-brown/50"
                   }`}
                 >
                   {p}

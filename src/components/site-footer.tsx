@@ -33,7 +33,7 @@ export function SiteFooter() {
         </p>
         <Link
           href="/tham-gia"
-          className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-white hover:bg-brand-orange-dark"
+          className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-brown px-6 py-3 text-sm font-semibold text-white hover:bg-brand-brown-dark"
         >
           <HeartIcon className="h-4 w-4" />
           Đăng ký ngay
@@ -43,7 +43,7 @@ export function SiteFooter() {
       <div className="relative mx-auto grid max-w-7xl gap-10 border-t border-white/10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <Image src="/brand/logo-white.webp" alt={SITE.fullName} width={160} height={74} className="h-auto w-40" />
-          <p className="mt-3 text-sm font-medium text-amber-300">Nơi Ánh Sáng Chạm Trái Tim</p>
+          <p className="mt-3 text-sm font-medium text-brand-brown-light">Nơi Ánh Sáng Chạm Trái Tim</p>
           <p className="mt-4 text-sm text-zinc-300/80">
             Hiển Linh là nơi kết nối những tấm lòng thiện nguyện để cùng nhau lan
             tỏa yêu thương và tạo nên tác động tích cực bền vững.
@@ -64,14 +64,14 @@ export function SiteFooter() {
 
         <div>
           <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-white">
-            <LeafIcon className="h-4 w-4 text-amber-300" />
+            <LeafIcon className="h-4 w-4 text-brand-brown-light" />
             Liên kết nhanh
           </p>
           <ul className="mt-4 space-y-2 text-sm">
             {FOOTER_LINKS.map((link) => (
               <li key={link.href}>
                 <Link href={link.href} className="flex items-center gap-1 hover:text-white">
-                  <span className="text-amber-300">›</span> {link.label}
+                  <span className="text-brand-brown-light">›</span> {link.label}
                 </Link>
               </li>
             ))}
@@ -80,24 +80,24 @@ export function SiteFooter() {
 
         <div>
           <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-white">
-            <PhoneIcon className="h-4 w-4 text-amber-300" />
+            <PhoneIcon className="h-4 w-4 text-brand-brown-light" />
             Thông tin liên hệ
           </p>
           <ul className="mt-4 space-y-3 text-sm text-zinc-300/80">
             <li className="flex items-start gap-2">
-              <MapPinIcon className="mt-0.5 h-4 w-4 shrink-0 text-amber-300" />
+              <MapPinIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-brown-light" />
               {SITE.address}
             </li>
             <li className="flex items-center gap-2">
-              <PhoneIcon className="h-4 w-4 shrink-0 text-amber-300" />
+              <PhoneIcon className="h-4 w-4 shrink-0 text-brand-brown-light" />
               {SITE.phone}
             </li>
             <li className="flex items-center gap-2">
-              <MailIcon className="h-4 w-4 shrink-0 text-amber-300" />
+              <MailIcon className="h-4 w-4 shrink-0 text-brand-brown-light" />
               {SITE.email}
             </li>
             <li className="flex items-center gap-2">
-              <GlobeIcon className="h-4 w-4 shrink-0 text-amber-300" />
+              <GlobeIcon className="h-4 w-4 shrink-0 text-brand-brown-light" />
               {SITE.website}
             </li>
           </ul>
@@ -105,7 +105,7 @@ export function SiteFooter() {
 
         <div>
           <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-white">
-            <MailIcon className="h-4 w-4 text-amber-300" />
+            <MailIcon className="h-4 w-4 text-brand-brown-light" />
             Đăng ký nhận tin
           </p>
           <p className="mt-4 text-sm text-zinc-300/80">

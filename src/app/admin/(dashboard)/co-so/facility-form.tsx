@@ -79,7 +79,7 @@ export function FacilityForm({
       </div>
       <button
         type="submit"
-        className="rounded-full bg-amber-800 px-6 py-3 text-sm font-medium text-white hover:bg-amber-900"
+        className="rounded-full bg-brand-brown px-6 py-3 text-sm font-medium text-white hover:bg-brand-brown-dark"
       >
         Lưu
       </button>
