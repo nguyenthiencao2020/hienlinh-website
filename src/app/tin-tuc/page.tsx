@@ -8,25 +8,38 @@ export const revalidate = 60;
 
 const PAGE_SIZE = 6;
 
+const TABS = [
+  { value: "", label: "Tin Tức Mới Nhất" },
+  { value: "noi-bat", label: "Hoạt Động Nổi Bật" },
+  { value: "thanh-cong", label: "Câu Chuyện Thành Công" },
+];
+
 export default async function NewsListPage({
   searchParams,
 }: {
-  searchParams: Promise<{ page?: string }>;
+  searchParams: Promise<{ page?: string; loai?: string }>;
 }) {
-  const { page: pageParam } = await searchParams;
+  const { page: pageParam, loai } = await searchParams;
   const page = Math.max(1, Number(pageParam ?? "1") || 1);
+  const activeTab = TABS.some((t) => t.value === loai) ? (loai ?? "") : "";
   const from = (page - 1) * PAGE_SIZE;
   const to = from + PAGE_SIZE - 1;
 
   const supabase = await createClient();
-  const { data: news, count } = await supabase
+  let query = supabase
     .from("news")
     .select("*", { count: "exact" })
     .eq("published", true)
     .order("published_at", { ascending: false })
-    .range(from, to)
-    .returns<NewsPost[]>();
+    .range(from, to);
 
+  if (activeTab === "noi-bat") {
+    query = query.eq("is_featured", true);
+  } else if (activeTab === "thanh-cong") {
+    query = query.eq("is_success_story", true);
+  }
+
+  const { data: news, count } = await query.returns<NewsPost[]>();
   const totalPages = Math.max(1, Math.ceil((count ?? 0) / PAGE_SIZE));
 
   return (
@@ -35,7 +48,23 @@ export default async function NewsListPage({
 
       <section className="px-6 py-16">
         <div className="mx-auto max-w-6xl">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="flex flex-wrap gap-2">
+            {TABS.map((tab) => (
+              <Link
+                key={tab.value}
+                href={tab.value ? `/tin-tuc?loai=${tab.value}` : "/tin-tuc"}
+                className={`rounded-full px-4 py-2 text-sm font-medium ${
+                  activeTab === tab.value
+                    ? "bg-brand-orange text-white"
+                    : "border border-zinc-200 text-zinc-600 hover:border-brand-orange/50"
+                }`}
+              >
+                {tab.label}
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {(news ?? []).map((post) => (
               <Link
                 key={post.id}
@@ -79,7 +108,7 @@ export default async function NewsListPage({
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
                 <Link
                   key={p}
-                  href={`/tin-tuc?page=${p}`}
+                  href={`/tin-tuc?page=${p}${activeTab ? `&loai=${activeTab}` : ""}`}
                   className={`rounded-full px-3 py-1.5 ${
                     p === page
                       ? "bg-brand-orange text-white"

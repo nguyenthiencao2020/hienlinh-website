@@ -1,8 +1,20 @@
+import Image from "next/image";
 import { PageHero } from "@/components/page-hero";
+import { createClient } from "@/lib/supabase/server";
+import type { Partner } from "@/lib/types";
 import { VolunteerForm } from "./volunteer-form";
 import { DonationForm } from "./donation-form";
 
-export default function JoinPage() {
+export const revalidate = 60;
+
+export default async function JoinPage() {
+  const supabase = await createClient();
+  const { data: partners } = await supabase
+    .from("partners")
+    .select("*")
+    .order("sort_order", { ascending: true })
+    .returns<Partner[]>();
+
   return (
     <div>
       <PageHero
@@ -63,6 +75,37 @@ export default function JoinPage() {
               </span>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="bg-brand-cream px-6 py-14">
+        <div className="mx-auto max-w-5xl text-center">
+          <h2 className="text-xl font-bold text-brand-green-dark">Đối Tác &amp; Tài Trợ</h2>
+          {partners?.length ? (
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-8">
+              {partners.map((partner) => (
+                <a
+                  key={partner.id}
+                  href={partner.website_url ?? undefined}
+                  className="relative h-16 w-32"
+                >
+                  {partner.logo_url && (
+                    <Image
+                      src={partner.logo_url}
+                      alt={partner.name}
+                      fill
+                      className="object-contain"
+                      sizes="128px"
+                    />
+                  )}
+                </a>
+              ))}
+            </div>
+          ) : (
+            <p className="mt-4 text-sm text-zinc-500">
+              Thông tin đối tác & tài trợ sẽ được cập nhật sau.
+            </p>
+          )}
         </div>
       </section>
     </div>

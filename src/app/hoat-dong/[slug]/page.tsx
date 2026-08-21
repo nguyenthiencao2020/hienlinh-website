@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 import { PageHero } from "@/components/page-hero";
 import { createClient } from "@/lib/supabase/server";
 import { PROGRAM_FALLBACK_IMAGES } from "@/lib/program-images";
-import type { Program } from "@/lib/types";
+import { FACILITY_FALLBACK_IMAGES } from "@/lib/facility-images";
+import type { Facility, Program } from "@/lib/types";
 
 export const revalidate = 60;
 
@@ -15,11 +16,15 @@ export default async function ProgramPage({
 }) {
   const { slug } = await params;
   const supabase = await createClient();
-  const { data: program } = await supabase
-    .from("programs")
-    .select("*")
-    .eq("slug", slug)
-    .maybeSingle<Program>();
+  const [{ data: program }, { data: facilities }] = await Promise.all([
+    supabase.from("programs").select("*").eq("slug", slug).maybeSingle<Program>(),
+    supabase
+      .from("facilities")
+      .select("*")
+      .eq("program_slug", slug)
+      .order("sort_order", { ascending: true })
+      .returns<Facility[]>(),
+  ]);
 
   if (!program) notFound();
 
@@ -46,9 +51,35 @@ export default async function ProgramPage({
         </Link>
       </article>
 
-      <div className="relative mx-auto mb-16 aspect-[16/7] max-w-5xl overflow-hidden rounded-2xl">
-        <Image src={image} alt={program.name} fill className="object-cover" sizes="100vw" />
-      </div>
+      {!!facilities?.length && (
+        <section className="mx-auto mb-16 max-w-5xl px-6">
+          <h2 className="text-xl font-bold text-brand-green-dark">Cơ sở liên quan</h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {facilities.map((facility) => (
+              <Link
+                key={facility.id}
+                href={`/co-so/${facility.slug}`}
+                className="overflow-hidden rounded-xl border border-zinc-200 hover:border-brand-orange/50"
+              >
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src={
+                      facility.cover_image_url ||
+                      FACILITY_FALLBACK_IMAGES[facility.slug] ||
+                      "/images/hero-page.webp"
+                    }
+                    alt={facility.name}
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 33vw, 50vw"
+                  />
+                </div>
+                <p className="p-3 text-sm font-medium text-brand-green-dark">{facility.name}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }

@@ -24,6 +24,8 @@ function readNewsForm(formData: FormData) {
     content: String(formData.get("content") ?? "").trim(),
     category: String(formData.get("category") ?? "").trim() || null,
     cover_image_url: String(formData.get("cover_image_url") ?? "").trim() || null,
+    is_featured: formData.get("is_featured") === "on",
+    is_success_story: formData.get("is_success_story") === "on",
     published: formData.get("published") === "on",
   };
 }

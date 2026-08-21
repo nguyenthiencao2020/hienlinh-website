@@ -67,6 +67,16 @@ export function NewsForm({
           className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2"
         />
       </div>
+      <div className="space-y-2">
+        <label className="flex items-center gap-2 text-sm text-zinc-700">
+          <input type="checkbox" name="is_featured" defaultChecked={news?.is_featured} />
+          Hiển thị ở tab &quot;Hoạt Động Nổi Bật&quot;
+        </label>
+        <label className="flex items-center gap-2 text-sm text-zinc-700">
+          <input type="checkbox" name="is_success_story" defaultChecked={news?.is_success_story} />
+          Hiển thị ở tab &quot;Câu Chuyện Thành Công&quot;
+        </label>
+      </div>
       <label className="flex items-center gap-2 text-sm text-zinc-700">
         <input type="checkbox" name="published" defaultChecked={news?.published} />
         Đăng bài (hiển thị công khai)

@@ -5,7 +5,7 @@ import { signOut } from "./actions";
 const NAV = [
   { href: "/admin", label: "Tổng quan" },
   { href: "/admin/tin-tuc", label: "Tin tức" },
-  { href: "/admin/thu-vien", label: "Thư viện" },
+  { href: "/admin/co-so", label: "Cơ sở" },
   { href: "/admin/tin-nhan", label: "Tin nhắn / Đăng ký" },
 ];
 
