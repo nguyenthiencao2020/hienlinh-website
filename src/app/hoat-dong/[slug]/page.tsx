@@ -38,7 +38,7 @@ export default async function ProgramPage({
 
       <Reveal className="mx-auto block max-w-3xl px-6 py-16">
         <article>
-          <p className="text-sm font-semibold uppercase tracking-wide text-brand-orange">
+          <p className="text-sm font-semibold uppercase tracking-wide text-brand-brown">
             Hệ sinh thái Hiển Linh
           </p>
           <p className="mt-4 text-lg text-zinc-600">{program.summary}</p>

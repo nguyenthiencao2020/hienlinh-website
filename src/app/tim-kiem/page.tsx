@@ -69,7 +69,7 @@ export default async function SearchPage({
                 <div className="space-y-8">
                   {!!programs.length && (
                     <div>
-                      <h2 className="text-sm font-semibold uppercase tracking-wide text-brand-orange">
+                      <h2 className="text-sm font-semibold uppercase tracking-wide text-brand-brown">
                         Lĩnh vực hoạt động
                       </h2>
                       <ul className="mt-2 space-y-1">
@@ -85,7 +85,7 @@ export default async function SearchPage({
                   )}
                   {!!facilities.length && (
                     <div>
-                      <h2 className="text-sm font-semibold uppercase tracking-wide text-brand-orange">
+                      <h2 className="text-sm font-semibold uppercase tracking-wide text-brand-brown">
                         Cơ sở
                       </h2>
                       <ul className="mt-2 space-y-1">
@@ -101,7 +101,7 @@ export default async function SearchPage({
                   )}
                   {!!news.length && (
                     <div>
-                      <h2 className="text-sm font-semibold uppercase tracking-wide text-brand-orange">
+                      <h2 className="text-sm font-semibold uppercase tracking-wide text-brand-brown">
                         Tin tức
                       </h2>
                       <ul className="mt-2 space-y-1">

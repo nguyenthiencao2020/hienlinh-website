@@ -86,7 +86,7 @@ export default async function Home() {
             />
           </Reveal>
           <Reveal delay={150}>
-            <p className="text-sm font-semibold uppercase tracking-wide text-brand-orange">
+            <p className="text-sm font-semibold uppercase tracking-wide text-brand-brown">
               Chúng tôi là ai?
             </p>
             <h2 className="mt-2 text-3xl font-bold text-brand-green-dark">
@@ -115,7 +115,7 @@ export default async function Home() {
       <section className="bg-brand-cream px-6 py-20">
         <div className="mx-auto max-w-7xl">
           <Reveal className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-wide text-brand-orange">
+            <p className="text-sm font-semibold uppercase tracking-wide text-brand-brown">
               Các lĩnh vực hoạt động cốt lõi
             </p>
             <h2 className="mt-2 text-3xl font-bold text-brand-green-dark">
