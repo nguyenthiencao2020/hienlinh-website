@@ -23,7 +23,7 @@ export default async function ProgramsPage() {
       <section className="px-6 py-16">
         <div className="mx-auto max-w-6xl">
           <Reveal>
-            <h2 className="text-xl font-bold text-brand-green-dark">Các lĩnh vực hoạt động</h2>
+            <h2 className="text-xl font-bold text-brand-green">Các lĩnh vực hoạt động</h2>
           </Reveal>
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {(programs ?? []).map((program, i) => (
@@ -46,7 +46,7 @@ export default async function ProgramsPage() {
                   />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-brand-green-dark">{program.name}</h3>
+                  <h3 className="text-lg font-semibold text-brand-green">{program.name}</h3>
                   <p className="mt-2 text-sm text-zinc-600">{program.summary}</p>
                   <Link
                     href={`/hoat-dong/${program.slug}`}
@@ -69,7 +69,7 @@ export default async function ProgramsPage() {
       <section className="bg-brand-cream px-6 py-16">
         <div className="mx-auto max-w-6xl">
           <Reveal>
-            <h2 className="text-xl font-bold text-brand-green-dark">Các cơ sở của chúng tôi</h2>
+            <h2 className="text-xl font-bold text-brand-green">Các cơ sở của chúng tôi</h2>
           </Reveal>
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {(facilities ?? []).map((facility, i) => (
@@ -91,7 +91,7 @@ export default async function ProgramsPage() {
                       sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                     />
                   </div>
-                  <p className="p-4 text-sm font-semibold text-brand-green-dark">{facility.name}</p>
+                  <p className="p-4 text-sm font-semibold text-brand-green">{facility.name}</p>
                 </Link>
               </Reveal>
             ))}

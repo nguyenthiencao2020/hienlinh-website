@@ -53,7 +53,7 @@ export default async function AboutPage() {
             />
           </Reveal>
           <Reveal delay={150}>
-            <h1 className="text-2xl font-bold text-brand-green-dark">Câu Chuyện Của Chúng Tôi</h1>
+            <h1 className="text-2xl font-bold text-brand-green">Câu Chuyện Của Chúng Tôi</h1>
             <p className="mt-4 text-zinc-600">
               Khởi đi từ tinh thần lắng nghe những dấu chỉ của thời đại, chúng
               tôi nhận ra rằng có rất nhiều người cần một môi trường an toàn để
@@ -76,7 +76,7 @@ export default async function AboutPage() {
       <section className="bg-brand-cream px-6 py-14">
         <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2">
           <Reveal className="rounded-2xl bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-            <h2 className="text-xl font-bold text-brand-green-dark">Tầm Nhìn</h2>
+            <h2 className="text-xl font-bold text-brand-green">Tầm Nhìn</h2>
             <p className="mt-3 text-zinc-600">
               Một xã hội nơi mỗi người đều được sống trong phẩm giá, tình
               thương, và hy vọng; ưu tiên người dễ bị tổn thương.
@@ -86,7 +86,7 @@ export default async function AboutPage() {
             delay={120}
             className="rounded-2xl bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
           >
-            <h2 className="text-xl font-bold text-brand-green-dark">Sứ Mệnh</h2>
+            <h2 className="text-xl font-bold text-brand-green">Sứ Mệnh</h2>
             <p className="mt-3 text-zinc-600">
               DNXH Hiển Linh lan tỏa tinh thần FMM qua giáo dục, đồng hành,
               chăm sóc toàn diện cho trẻ em, người trẻ; đặc biệt người dễ bị
@@ -101,7 +101,7 @@ export default async function AboutPage() {
       <section className="px-6 py-16">
         <div className="mx-auto max-w-6xl">
           <Reveal>
-            <h2 className="text-center text-2xl font-bold text-brand-green-dark">
+            <h2 className="text-center text-2xl font-bold text-brand-green">
               Giá Trị Cốt Lõi
             </h2>
           </Reveal>
@@ -109,7 +109,7 @@ export default async function AboutPage() {
             {CORE_VALUES.map((value, i) => (
               <Reveal key={value.vi} delay={i * 80}>
                 <div className="h-full rounded-2xl border border-zinc-200 p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand-orange/30 hover:shadow-lg">
-                  <h3 className="font-semibold text-brand-green-dark">{value.vi}</h3>
+                  <h3 className="font-semibold text-brand-green">{value.vi}</h3>
                   <p className="text-xs italic text-brand-brown">{value.en}</p>
                   <p className="mt-3 text-sm text-zinc-600">{value.desc}</p>
                 </div>
@@ -122,7 +122,7 @@ export default async function AboutPage() {
       <section className="bg-brand-cream px-6 py-16">
         <div className="mx-auto max-w-6xl">
           <Reveal>
-            <h2 className="text-center text-2xl font-bold text-brand-green-dark">
+            <h2 className="text-center text-2xl font-bold text-brand-green">
               Đội Ngũ Của Chúng Tôi
             </h2>
           </Reveal>
@@ -145,7 +145,7 @@ export default async function AboutPage() {
                       />
                     )}
                   </div>
-                  <h3 className="mt-4 font-semibold text-brand-green-dark">{member.full_name}</h3>
+                  <h3 className="mt-4 font-semibold text-brand-green">{member.full_name}</h3>
                   <p className="text-sm text-brand-brown">{member.role}</p>
                   {member.bio && <p className="mt-2 text-sm text-zinc-600">{member.bio}</p>}
                 </Reveal>
