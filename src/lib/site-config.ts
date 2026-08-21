@@ -4,7 +4,7 @@ export const SITE = {
   tagline: "Tổ chức DNXH Hiển Linh",
   address: "Số 15, Đường Xanh, P. An Lạc, Q. Bình Tân, TP. Hồ Chí Minh",
   phone: "0901 234 567",
-  email: "info@hienlinh.org.vn",
+  email: "contact@hienlinh-fmm.org",
   website: "www.hienlinh.org.vn",
   socials: {
     facebook: "https://facebook.com/hienlinh",
