@@ -1,5 +1,6 @@
 "use client";
 
+import { ImageUploadField } from "@/components/image-upload-field";
 import type { NewsPost } from "@/lib/types";
 
 export function NewsForm({
@@ -39,16 +40,12 @@ export function NewsForm({
           className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2"
         />
       </div>
-      <div>
-        <label className="block text-sm font-medium text-zinc-700">
-          Ảnh bìa (URL từ Supabase Storage)
-        </label>
-        <input
-          name="cover_image_url"
-          defaultValue={news?.cover_image_url ?? ""}
-          className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2"
-        />
-      </div>
+      <ImageUploadField
+        name="cover_image_url"
+        label="Ảnh bìa"
+        defaultValue={news?.cover_image_url}
+        folder="news"
+      />
       <div>
         <label className="block text-sm font-medium text-zinc-700">Tóm tắt</label>
         <textarea
