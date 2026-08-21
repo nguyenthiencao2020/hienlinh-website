@@ -17,7 +17,7 @@ export default async function AdminNewsListPage() {
         <h1 className="text-2xl font-bold text-zinc-900">Tin tức</h1>
         <Link
           href="/admin/tin-tuc/moi"
-          className="rounded-full bg-amber-800 px-4 py-2 text-sm font-medium text-white hover:bg-amber-900"
+          className="rounded-full bg-brand-brown px-4 py-2 text-sm font-medium text-white hover:bg-brand-brown-dark"
         >
           + Bài viết mới
         </Link>
@@ -37,7 +37,7 @@ export default async function AdminNewsListPage() {
               </p>
             </div>
             <div className="flex items-center gap-3 text-sm">
-              <Link href={`/admin/tin-tuc/${post.id}`} className="text-amber-800 underline">
+              <Link href={`/admin/tin-tuc/${post.id}`} className="text-brand-brown underline">
                 Sửa
               </Link>
               <form action={deleteNews.bind(null, post.id)}>

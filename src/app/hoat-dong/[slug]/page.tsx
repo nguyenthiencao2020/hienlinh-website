@@ -38,7 +38,7 @@ export default async function ProgramPage({
 
       <Reveal className="mx-auto block max-w-3xl px-6 py-16">
         <article>
-          <p className="text-sm font-semibold uppercase tracking-wide text-brand-orange">
+          <p className="text-sm font-semibold uppercase tracking-wide text-brand-brown">
             Hệ sinh thái Hiển Linh
           </p>
           <p className="mt-4 text-lg text-zinc-600">{program.summary}</p>
@@ -47,7 +47,7 @@ export default async function ProgramPage({
           )}
           <Link
             href="/tham-gia"
-            className="mt-8 inline-block rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-brand-orange-dark hover:shadow-lg"
+            className="mt-8 inline-block rounded-full bg-brand-brown px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-brand-brown-dark hover:shadow-lg"
           >
             Đồng hành cùng chương trình này →
           </Link>
@@ -64,7 +64,7 @@ export default async function ProgramPage({
               <Reveal key={facility.id} delay={i * 70}>
                 <Link
                   href={`/co-so/${facility.slug}`}
-                  className="group block overflow-hidden rounded-xl border border-zinc-200 transition-all duration-300 hover:-translate-y-1 hover:border-brand-orange/50 hover:shadow-lg"
+                  className="group block overflow-hidden rounded-xl border border-zinc-200 transition-all duration-300 hover:-translate-y-1 hover:border-brand-brown/50 hover:shadow-lg"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image

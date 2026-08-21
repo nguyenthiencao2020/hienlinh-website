@@ -47,7 +47,7 @@ export function SiteHeader() {
           </Link>
           <Link
             href="/tham-gia#quyen-gop"
-            className="flex items-center gap-1.5 rounded-full bg-brand-orange px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:bg-brand-orange-dark hover:shadow-lg hover:shadow-brand-orange/30"
+            className="flex items-center gap-1.5 rounded-full bg-brand-brown px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:bg-brand-brown-dark hover:shadow-lg hover:shadow-brand-brown/30"
           >
             <HeartIcon className="h-3.5 w-3.5" />
             Quyên Góp

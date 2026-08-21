@@ -56,7 +56,7 @@ export default function AdminLoginPage() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full rounded-full bg-amber-800 px-6 py-3 text-sm font-medium text-white hover:bg-amber-900 disabled:opacity-60"
+          className="w-full rounded-full bg-brand-brown px-6 py-3 text-sm font-medium text-white hover:bg-brand-brown-dark disabled:opacity-60"
         >
           {loading ? "Đang đăng nhập..." : "Đăng nhập"}
         </button>

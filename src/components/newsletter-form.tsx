@@ -16,7 +16,7 @@ export function NewsletterForm() {
   }
 
   if (state === "success") {
-    return <p className="text-sm text-amber-200">Đã đăng ký nhận tin, cảm ơn bạn!</p>;
+    return <p className="text-sm text-brand-brown-light">Đã đăng ký nhận tin, cảm ơn bạn!</p>;
   }
 
   return (
@@ -32,7 +32,7 @@ export function NewsletterForm() {
         type="submit"
         disabled={isPending}
         aria-label="Đăng ký nhận tin"
-        className="flex shrink-0 items-center justify-center rounded-full bg-brand-orange p-2.5 text-white hover:bg-brand-orange-dark disabled:opacity-60"
+        className="flex shrink-0 items-center justify-center rounded-full bg-brand-brown p-2.5 text-white hover:bg-brand-brown-dark disabled:opacity-60"
       >
         <SendIcon className="h-4 w-4" />
       </button>

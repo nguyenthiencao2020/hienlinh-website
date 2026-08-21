@@ -17,7 +17,7 @@ export default async function AdminFacilitiesPage() {
         <h1 className="text-2xl font-bold text-zinc-900">Cơ sở</h1>
         <Link
           href="/admin/co-so/moi"
-          className="rounded-full bg-amber-800 px-4 py-2 text-sm font-medium text-white hover:bg-amber-900"
+          className="rounded-full bg-brand-brown px-4 py-2 text-sm font-medium text-white hover:bg-brand-brown-dark"
         >
           + Cơ sở mới
         </Link>
@@ -30,7 +30,7 @@ export default async function AdminFacilitiesPage() {
               <p className="text-xs text-zinc-500">/{facility.slug}</p>
             </div>
             <div className="flex items-center gap-3 text-sm">
-              <Link href={`/admin/co-so/${facility.id}`} className="text-amber-800 underline">
+              <Link href={`/admin/co-so/${facility.id}`} className="text-brand-brown underline">
                 Sửa
               </Link>
               <form action={deleteFacility.bind(null, facility.id)}>

@@ -34,7 +34,7 @@ export default async function AdminDashboardLayout({
         <div className="mt-8 border-t border-zinc-200 pt-4 text-xs text-zinc-500">
           <p className="truncate">{data.user?.email}</p>
           <form action={signOut}>
-            <button className="mt-2 text-amber-800 underline" type="submit">
+            <button className="mt-2 text-brand-brown underline" type="submit">
               Đăng xuất
             </button>
           </form>
