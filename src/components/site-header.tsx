@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MAIN_NAV, SITE } from "@/lib/site-config";
+import { HeartIcon, SearchIcon } from "./icons";
 
 export function SiteHeader() {
   return (
@@ -22,13 +23,14 @@ export function SiteHeader() {
             aria-label="Tìm kiếm"
             className="text-zinc-500 hover:text-brand-green"
           >
-            🔍
+            <SearchIcon className="h-5 w-5" />
           </Link>
           <Link
             href="/tham-gia#quyen-gop"
-            className="rounded-full bg-brand-orange px-4 py-2 text-sm font-semibold text-white hover:bg-brand-orange-dark"
+            className="flex items-center gap-1.5 rounded-full bg-brand-orange px-4 py-2 text-sm font-semibold text-white hover:bg-brand-orange-dark"
           >
-            ♥ Quyên Góp
+            <HeartIcon className="h-3.5 w-3.5" />
+            Quyên Góp
           </Link>
         </div>
       </div>

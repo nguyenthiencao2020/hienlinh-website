@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { subscribeNewsletter } from "./newsletter-actions";
+import { SendIcon } from "./icons";
 
 export function NewsletterForm() {
   const [isPending, startTransition] = useTransition();
@@ -31,9 +32,9 @@ export function NewsletterForm() {
         type="submit"
         disabled={isPending}
         aria-label="Đăng ký nhận tin"
-        className="shrink-0 rounded-full bg-brand-orange px-4 py-2 text-sm font-medium text-white hover:bg-brand-orange-dark disabled:opacity-60"
+        className="flex shrink-0 items-center justify-center rounded-full bg-brand-orange p-2.5 text-white hover:bg-brand-orange-dark disabled:opacity-60"
       >
-        ➤
+        <SendIcon className="h-4 w-4" />
       </button>
     </form>
   );

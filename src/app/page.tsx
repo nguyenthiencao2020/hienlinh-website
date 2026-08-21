@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { PROGRAM_FALLBACK_IMAGES } from "@/lib/program-images";
+import { LeafyBackground } from "@/components/leafy-background";
+import { HeartIcon } from "@/components/icons";
 import type { NewsPost, Program } from "@/lib/types";
 
 export const revalidate = 60;
@@ -220,17 +222,23 @@ export default async function Home() {
       </section>
 
       {/* Section 6: CTA */}
-      <section className="bg-brand-green-dark px-6 py-16 text-center text-white">
-        <h2 className="text-2xl font-bold">Đăng Ký Tham Gia Thiện Nguyện &amp; Quyên Góp</h2>
-        <p className="mx-auto mt-3 max-w-xl text-white/80">
-          Mỗi sự đóng góp là một điểm chạm yêu thương gửi tới những người yếu thế.
-        </p>
-        <Link
-          href="/tham-gia"
-          className="mt-6 inline-block rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-white hover:bg-brand-orange-dark"
-        >
-          Đăng ký ngay
-        </Link>
+      <section className="relative overflow-hidden px-6 py-20 text-center text-white">
+        <LeafyBackground />
+        <div className="relative">
+          <h2 className="text-2xl font-bold sm:text-3xl">
+            Đăng Ký Tham Gia Thiện Nguyện &amp; Quyên Góp
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-white/80">
+            Mỗi sự đóng góp là mầm ánh sáng yêu thương gửi tới những người yếu thế.
+          </p>
+          <Link
+            href="/tham-gia"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-white hover:bg-brand-orange-dark"
+          >
+            <HeartIcon className="h-4 w-4" />
+            Đăng ký ngay
+          </Link>
+        </div>
       </section>
     </div>
   );
