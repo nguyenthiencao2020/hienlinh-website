@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { PROGRAM_FALLBACK_IMAGES } from "@/lib/program-images";
+import { Reveal } from "@/components/reveal";
 import type { NewsPost, Program } from "@/lib/types";
 
 export const revalidate = 60;
@@ -33,31 +34,37 @@ export default async function Home() {
           alt="Tình nguyện viên Hiển Linh đồng hành cùng trẻ em"
           fill
           priority
-          className="object-cover"
+          className="animate-kenburns object-cover"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10" />
         <div className="relative mx-auto max-w-7xl px-6 py-24">
           <div className="max-w-xl text-white">
-            <h1 className="text-4xl font-bold leading-tight sm:text-5xl">
+            <h1 className="reveal is-visible text-4xl font-bold leading-tight sm:text-5xl">
               Nơi Ánh Sáng Chạm Trái Tim
             </h1>
-            <p className="mt-6 text-lg text-white/90">
+            <p
+              className="reveal is-visible mt-6 text-lg text-white/90"
+              style={{ animationDelay: "150ms" }}
+            >
               Hiển Linh &quot;chạm&quot; những mảnh đời bất hạnh, yếu thế — nơi môi
               trường Giáo dục, Y tế, các hoạt động thiện nguyện. Từ đó một hành
               trình mới mở ra bằng sự nâng đỡ, lắng nghe, đồng hành và giúp họ
               vươn lên trong cuộc sống.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div
+              className="reveal is-visible mt-8 flex flex-wrap gap-4"
+              style={{ animationDelay: "300ms" }}
+            >
               <Link
                 href="/about"
-                className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-green-dark hover:bg-zinc-100"
+                className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-green-dark transition-all duration-300 hover:scale-105 hover:bg-zinc-100 hover:shadow-lg"
               >
                 Khám phá thêm
               </Link>
               <Link
                 href="/tham-gia"
-                className="rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-white hover:bg-brand-orange-dark"
+                className="rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-brand-orange-dark hover:shadow-lg hover:shadow-brand-orange/30"
               >
                 Trở thành tình nguyện viên
               </Link>
@@ -69,16 +76,16 @@ export default async function Home() {
       {/* Section 2: Chúng tôi là ai */}
       <section className="px-6 py-20">
         <div className="mx-auto grid max-w-7xl gap-10 sm:grid-cols-2 sm:items-center">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+          <Reveal className="relative aspect-[4/3] overflow-hidden rounded-2xl">
             <Image
               src="/images/about-story.webp"
               alt="Đội ngũ Hiển Linh đồng hành cùng cộng đồng"
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-700 hover:scale-105"
               sizes="(min-width: 640px) 50vw, 100vw"
             />
-          </div>
-          <div>
+          </Reveal>
+          <Reveal delay={150}>
             <p className="text-sm font-semibold uppercase tracking-wide text-brand-orange">
               Chúng tôi là ai?
             </p>
@@ -95,18 +102,19 @@ export default async function Home() {
             </p>
             <Link
               href="/hoat-dong"
-              className="mt-6 inline-block rounded-full bg-brand-green px-6 py-3 text-sm font-semibold text-white hover:bg-brand-green-dark"
+              className="group mt-6 inline-flex items-center gap-1.5 rounded-full bg-brand-green px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-brand-green-dark hover:shadow-lg"
             >
-              Khám phá thêm →
+              Khám phá thêm
+              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </Link>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Section 3: Hệ sinh thái */}
       <section className="bg-brand-cream px-6 py-20">
         <div className="mx-auto max-w-7xl">
-          <div className="max-w-2xl">
+          <Reveal className="max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-wide text-brand-orange">
               Các lĩnh vực hoạt động cốt lõi
             </p>
@@ -118,29 +126,31 @@ export default async function Home() {
               thông qua giáo dục, y tế, hỗ trợ tâm lý và các hoạt động xã hội,
               thiện nguyện.
             </p>
-          </div>
+          </Reveal>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-            {(programs ?? []).map((program) => (
-              <Link
-                key={program.id}
-                href={`/hoat-dong/${program.slug}`}
-                className="rounded-2xl bg-white p-6 text-center shadow-sm transition hover:shadow-md"
-              >
-                <div className="relative mx-auto h-20 w-20 overflow-hidden rounded-full">
-                  <Image
-                    src={program.cover_image_url || PROGRAM_FALLBACK_IMAGES[program.slug] || "/images/hero-page.webp"}
-                    alt={program.name}
-                    fill
-                    className="object-cover"
-                    sizes="80px"
-                  />
-                </div>
-                <h3 className="mt-4 font-semibold text-brand-green-dark">{program.name}</h3>
-                <p className="mt-2 text-sm text-zinc-600">{program.summary}</p>
-                <span className="mt-3 inline-block text-sm font-medium text-brand-orange">
-                  Xem chi tiết →
-                </span>
-              </Link>
+            {(programs ?? []).map((program, i) => (
+              <Reveal key={program.id} delay={i * 80}>
+                <Link
+                  href={`/hoat-dong/${program.slug}`}
+                  className="group block rounded-2xl bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                >
+                  <div className="relative mx-auto h-20 w-20 overflow-hidden rounded-full ring-4 ring-transparent transition-all duration-300 group-hover:ring-brand-orange/20">
+                    <Image
+                      src={program.cover_image_url || PROGRAM_FALLBACK_IMAGES[program.slug] || "/images/hero-page.webp"}
+                      alt={program.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      sizes="80px"
+                    />
+                  </div>
+                  <h3 className="mt-4 font-semibold text-brand-green-dark">{program.name}</h3>
+                  <p className="mt-2 text-sm text-zinc-600">{program.summary}</p>
+                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-brand-orange">
+                    Xem chi tiết
+                    <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  </span>
+                </Link>
+              </Reveal>
             ))}
             {!programs?.length && (
               <p className="text-sm text-zinc-500">
@@ -161,7 +171,7 @@ export default async function Home() {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-brand-green-dark/80" />
-        <div className="relative mx-auto max-w-3xl text-center text-white">
+        <Reveal className="relative mx-auto max-w-3xl text-center text-white">
           <h2 className="text-3xl font-bold">
             Lắng Nghe, Thấu Cảm, Lan Tỏa Yêu Thương
           </h2>
@@ -172,45 +182,46 @@ export default async function Home() {
           </p>
           <Link
             href="/about"
-            className="mt-6 inline-block rounded-full border border-white px-6 py-3 text-sm font-semibold text-white hover:bg-white hover:text-brand-green-dark"
+            className="mt-6 inline-block rounded-full border border-white px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-brand-green-dark"
           >
             Về chúng tôi
           </Link>
-        </div>
+        </Reveal>
       </section>
 
       {/* Section 5: Tin tức */}
       <section className="px-6 py-20">
         <div className="mx-auto max-w-7xl">
-          <div className="flex items-end justify-between">
+          <Reveal className="flex items-end justify-between">
             <h2 className="text-3xl font-bold text-brand-green-dark">Tin tức &amp; Hoạt động</h2>
             <Link href="/tin-tuc" className="text-sm font-medium text-brand-orange hover:underline">
               Xem tất cả →
             </Link>
-          </div>
+          </Reveal>
           <div className="mt-8 grid gap-6 sm:grid-cols-3">
-            {(news ?? []).map((post) => (
-              <Link
-                key={post.id}
-                href={`/tin-tuc/${post.slug}`}
-                className="overflow-hidden rounded-xl border border-zinc-200 hover:border-brand-orange/50"
-              >
-                {post.cover_image_url && (
-                  <div className="relative aspect-[16/10]">
-                    <Image
-                      src={post.cover_image_url}
-                      alt={post.title}
-                      fill
-                      className="object-cover"
-                      sizes="(min-width: 640px) 33vw, 100vw"
-                    />
+            {(news ?? []).map((post, i) => (
+              <Reveal key={post.id} delay={i * 80}>
+                <Link
+                  href={`/tin-tuc/${post.slug}`}
+                  className="group block overflow-hidden rounded-xl border border-zinc-200 transition-all duration-300 hover:-translate-y-1 hover:border-brand-orange/50 hover:shadow-xl"
+                >
+                  {post.cover_image_url && (
+                    <div className="relative aspect-[16/10] overflow-hidden">
+                      <Image
+                        src={post.cover_image_url}
+                        alt={post.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        sizes="(min-width: 640px) 33vw, 100vw"
+                      />
+                    </div>
+                  )}
+                  <div className="p-5">
+                    <h3 className="font-semibold text-brand-green-dark">{post.title}</h3>
+                    <p className="mt-2 text-sm text-zinc-600 line-clamp-3">{post.excerpt}</p>
                   </div>
-                )}
-                <div className="p-5">
-                  <h3 className="font-semibold text-brand-green-dark">{post.title}</h3>
-                  <p className="mt-2 text-sm text-zinc-600 line-clamp-3">{post.excerpt}</p>
-                </div>
-              </Link>
+                </Link>
+              </Reveal>
             ))}
             {!news?.length && (
               <p className="text-sm text-zinc-500">Chưa có bài viết nào được đăng.</p>

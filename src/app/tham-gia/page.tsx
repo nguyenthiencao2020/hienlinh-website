@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { PageHero } from "@/components/page-hero";
+import { Reveal } from "@/components/reveal";
 import { createClient } from "@/lib/supabase/server";
 import type { Partner } from "@/lib/types";
 import { VolunteerForm } from "./volunteer-form";
@@ -25,7 +26,7 @@ export default async function JoinPage() {
 
       <section className="bg-brand-cream px-6 py-14">
         <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2">
-          <div>
+          <Reveal>
             <h2 className="text-xl font-bold text-brand-green-dark">
               Trở Thành Tình Nguyện Viên
             </h2>
@@ -44,28 +45,34 @@ export default async function JoinPage() {
               <li>✓ Tham gia các chương trình tư vấn, hỗ trợ tâm lý</li>
               <li>✓ Và nhiều hoạt động ý nghĩa khác</li>
             </ul>
-          </div>
-          <div className="rounded-2xl bg-white p-6">
+          </Reveal>
+          <Reveal
+            delay={150}
+            className="rounded-2xl bg-white p-6 shadow-sm transition-shadow duration-300 hover:shadow-lg"
+          >
             <h3 className="font-semibold text-brand-green-dark">
               Đăng Ký Trở Thành Tình Nguyện Viên
             </h3>
             <div className="mt-4">
               <VolunteerForm />
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section id="quyen-gop" className="px-6 py-14">
         <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2">
-          <div>
+          <Reveal>
             <h2 className="text-xl font-bold text-brand-green-dark">Quyên Góp / Ủng Hộ</h2>
             <p className="mt-3 text-zinc-600">
               Mỗi sự đóng góp, dù nhỏ bé, đều mang lại những thay đổi lớn lao
               cho cuộc sống của các em nhỏ và cộng đồng có hoàn cảnh khó khăn.
             </p>
-          </div>
-          <div className="rounded-2xl border border-zinc-200 p-6">
+          </Reveal>
+          <Reveal
+            delay={150}
+            className="rounded-2xl border border-zinc-200 p-6 transition-shadow duration-300 hover:shadow-lg"
+          >
             <DonationForm />
             <div className="mt-6 flex items-center gap-3 rounded-lg border border-dashed border-zinc-300 p-4 text-sm text-zinc-500">
               <span className="text-2xl">▦</span>
@@ -74,12 +81,12 @@ export default async function JoinPage() {
                 QR ngân hàng thật (chưa có trong dữ liệu hiện tại).
               </span>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="bg-brand-cream px-6 py-14">
-        <div className="mx-auto max-w-5xl text-center">
+        <Reveal className="mx-auto block max-w-5xl text-center">
           <h2 className="text-xl font-bold text-brand-green-dark">Đối Tác &amp; Tài Trợ</h2>
           {partners?.length ? (
             <div className="mt-8 flex flex-wrap items-center justify-center gap-8">
@@ -87,7 +94,7 @@ export default async function JoinPage() {
                 <a
                   key={partner.id}
                   href={partner.website_url ?? undefined}
-                  className="relative h-16 w-32"
+                  className="relative h-16 w-32 transition-transform duration-300 hover:scale-110"
                 >
                   {partner.logo_url && (
                     <Image
@@ -106,7 +113,7 @@ export default async function JoinPage() {
               Thông tin đối tác & tài trợ sẽ được cập nhật sau.
             </p>
           )}
-        </div>
+        </Reveal>
       </section>
     </div>
   );

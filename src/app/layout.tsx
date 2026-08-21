@@ -13,6 +13,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="vi" className="h-full antialiased">
       <body className="min-h-full flex flex-col bg-white text-zinc-900">
+        <noscript>
+          <style>{`.reveal { opacity: 1 !important; }`}</style>
+        </noscript>
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />
