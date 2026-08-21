@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
+import { PageHero } from "@/components/page-hero";
 import { createClient } from "@/lib/supabase/server";
 import type { NewsPost } from "@/lib/types";
 
@@ -21,19 +23,30 @@ export default async function NewsDetailPage({
   if (!post) notFound();
 
   return (
-    <article className="mx-auto max-w-3xl px-6 py-16">
-      {post.category && (
-        <span className="text-xs font-semibold uppercase tracking-wide text-amber-800">
-          {post.category}
-        </span>
-      )}
-      <h1 className="mt-2 text-3xl font-bold text-zinc-900">{post.title}</h1>
-      {post.published_at && (
-        <p className="mt-2 text-sm text-zinc-500">
-          {new Date(post.published_at).toLocaleDateString("vi-VN")}
-        </p>
-      )}
-      <div className="prose prose-zinc mt-8 whitespace-pre-wrap">{post.content}</div>
-    </article>
+    <div>
+      <PageHero
+        title={post.title}
+        crumbLabel="Tin Tức"
+        imageSrc={post.cover_image_url || "/images/hero-page.webp"}
+      />
+      <article className="mx-auto max-w-3xl px-6 py-16">
+        <div className="flex items-center gap-3 text-sm text-zinc-500">
+          {post.category && (
+            <span className="rounded-full bg-brand-cream px-3 py-1 font-semibold text-brand-orange">
+              {post.category}
+            </span>
+          )}
+          {post.published_at && (
+            <span>{new Date(post.published_at).toLocaleDateString("vi-VN")}</span>
+          )}
+        </div>
+        {post.cover_image_url && (
+          <div className="relative mt-6 aspect-[16/9] overflow-hidden rounded-2xl">
+            <Image src={post.cover_image_url} alt={post.title} fill className="object-cover" sizes="768px" />
+          </div>
+        )}
+        <div className="prose prose-zinc mt-8 whitespace-pre-wrap">{post.content}</div>
+      </article>
+    </div>
   );
 }
