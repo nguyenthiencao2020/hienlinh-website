@@ -6,6 +6,7 @@ import { LeafyBackground } from "./leafy-background";
 import {
   FacebookIcon,
   GlobeIcon,
+  HeartIcon,
   LeafIcon,
   MailIcon,
   MapPinIcon,
@@ -24,7 +25,24 @@ export function SiteFooter() {
   return (
     <footer className="relative text-zinc-300">
       <LeafyBackground />
-      <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-4">
+
+      <div className="relative px-6 py-16 text-center text-white">
+        <h2 className="text-2xl font-bold sm:text-3xl">
+          Đăng Ký Tham Gia Thiện Nguyện &amp; Quyên Góp
+        </h2>
+        <p className="mx-auto mt-3 max-w-xl text-white/80">
+          Mỗi sự đóng góp là mầm ánh sáng yêu thương gửi tới những người yếu thế.
+        </p>
+        <Link
+          href="/tham-gia"
+          className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-white hover:bg-brand-orange-dark"
+        >
+          <HeartIcon className="h-4 w-4" />
+          Đăng ký ngay
+        </Link>
+      </div>
+
+      <div className="relative mx-auto grid max-w-7xl gap-10 border-t border-white/10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <Image src="/brand/logo-white.webp" alt={SITE.fullName} width={160} height={74} className="h-auto w-40" />
           <p className="mt-3 text-sm font-medium text-amber-300">Nơi Ánh Sáng Chạm Trái Tim</p>
