@@ -39,9 +39,10 @@ Next.js (App Router) + Supabase (DB/Storage/Auth làm CMS) + Vercel + GitHub.
 ```
 Trang Chủ
 ├── Về Chúng Tôi        /about            (Câu chuyện, Tầm nhìn & Sứ mệnh, Giá trị cốt lõi, Đội ngũ)
-├── Hoạt Động & Cơ Sở
-│   ├── Lĩnh Vực Hoạt Động   /hoat-dong, /hoat-dong/[slug]   (bảng `programs`)
-│   └── Các Cơ Sở            /co-so, /co-so/[slug]           (bảng `facilities`)
+├── Hoạt Động & Cơ Sở    /hoat-dong        (1 trang, 2 section: Lĩnh vực hoạt động — bảng `programs`,
+│                                            và Cơ sở — bảng `facilities`)
+│   ├── /hoat-dong/[slug]   chi tiết từng lĩnh vực (kèm cơ sở liên quan)
+│   └── /co-so/[slug]       chi tiết từng cơ sở (không có trang danh sách riêng/không có trong nav)
 ├── Tin Tức & Sự Kiện    /tin-tuc, /tin-tuc/[slug]   (bảng `news`, tab Mới nhất/Nổi bật/Thành công)
 ├── Tham Gia             /tham-gia         (đăng ký TNV, quyên góp — chỉ thu ý định, không thanh toán thật;
 │                                            đối tác & tài trợ — bảng `partners`)

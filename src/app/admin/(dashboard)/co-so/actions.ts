@@ -36,7 +36,7 @@ export async function createFacility(formData: FormData) {
     throw new Error(error.message);
   }
 
-  revalidatePath("/co-so");
+  revalidatePath("/hoat-dong");
   revalidatePath("/admin/co-so");
   redirect("/admin/co-so");
 }
@@ -53,7 +53,7 @@ export async function updateFacility(id: string, formData: FormData) {
     throw new Error(error.message);
   }
 
-  revalidatePath("/co-so");
+  revalidatePath("/hoat-dong");
   revalidatePath("/admin/co-so");
   redirect("/admin/co-so");
 }
@@ -64,6 +64,6 @@ export async function deleteFacility(id: string) {
   if (error) {
     throw new Error(error.message);
   }
-  revalidatePath("/co-so");
+  revalidatePath("/hoat-dong");
   revalidatePath("/admin/co-so");
 }

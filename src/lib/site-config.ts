@@ -17,7 +17,6 @@ export const MAIN_NAV = [
   { href: "/", label: "Trang Chủ" },
   { href: "/about", label: "Về Chúng Tôi" },
   { href: "/hoat-dong", label: "Lĩnh Vực Hoạt Động" },
-  { href: "/co-so", label: "Cơ Sở" },
   { href: "/tin-tuc", label: "Tin Tức" },
   { href: "/tham-gia", label: "Tham Gia" },
   { href: "/lien-he", label: "Liên Hệ" },
@@ -26,7 +25,6 @@ export const MAIN_NAV = [
 export const FOOTER_LINKS = [
   { href: "/about", label: "Về Chúng Tôi" },
   { href: "/hoat-dong", label: "Lĩnh Vực Hoạt Động" },
-  { href: "/co-so", label: "Cơ Sở" },
   { href: "/tin-tuc", label: "Tin Tức" },
   { href: "/lien-he", label: "Liên Hệ" },
 ];
