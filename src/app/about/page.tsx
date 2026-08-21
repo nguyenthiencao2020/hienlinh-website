@@ -110,7 +110,7 @@ export default async function AboutPage() {
               <Reveal key={value.vi} delay={i * 80}>
                 <div className="h-full rounded-2xl border border-zinc-200 p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand-orange/30 hover:shadow-lg">
                   <h3 className="font-semibold text-brand-green-dark">{value.vi}</h3>
-                  <p className="text-xs italic text-brand-orange">{value.en}</p>
+                  <p className="text-xs italic text-brand-brown">{value.en}</p>
                   <p className="mt-3 text-sm text-zinc-600">{value.desc}</p>
                 </div>
               </Reveal>
@@ -146,7 +146,7 @@ export default async function AboutPage() {
                     )}
                   </div>
                   <h3 className="mt-4 font-semibold text-brand-green-dark">{member.full_name}</h3>
-                  <p className="text-sm text-brand-orange">{member.role}</p>
+                  <p className="text-sm text-brand-brown">{member.role}</p>
                   {member.bio && <p className="mt-2 text-sm text-zinc-600">{member.bio}</p>}
                 </Reveal>
               ))}
