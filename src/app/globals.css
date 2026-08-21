@@ -4,14 +4,14 @@
   --background: #ffffff;
   --foreground: #1c1c1c;
 
-  /* Bảng màu thương hiệu Hiển Linh — lấy đúng theo logo chính thức (Ref/logo.png) */
+  /* Xanh: đúng mã lấy từ logo chính thức (Ref/logo.png).
+     Cam: màu nhấn cho CTA/icon — không có trong logo nhưng giữ lại vì
+     tương phản/nổi bật hơn nâu trên nền sáng. */
   --brand-green: #00663e;
   --brand-green-dark: #00331f;
-  --brand-brown: #5c3013;
-  --brand-brown-dark: #4b2710;
-  /* Sắc nâu nhạt hơn (pha trắng từ mã nâu gốc) — chỉ dùng làm chữ/icon phụ
-     trên nền xanh đậm, vì nâu đậm gốc không đủ tương phản trên nền tối. */
-  --brand-brown-light: #957866;
+  --brand-orange: #f2841e;
+  --brand-orange-dark: #d96f10;
+  --brand-orange-light: #f8bb83;
   --brand-cream: #fdf8f0;
 }
 
@@ -20,9 +20,9 @@
   --color-foreground: var(--foreground);
   --color-brand-green: var(--brand-green);
   --color-brand-green-dark: var(--brand-green-dark);
-  --color-brand-brown: var(--brand-brown);
-  --color-brand-brown-dark: var(--brand-brown-dark);
-  --color-brand-brown-light: var(--brand-brown-light);
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-orange-dark: var(--brand-orange-dark);
+  --color-brand-orange-light: var(--brand-orange-light);
   --color-brand-cream: var(--brand-cream);
 }
 

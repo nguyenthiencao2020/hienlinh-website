@@ -68,7 +68,7 @@ export function DonationForm() {
               onClick={() => setAmount(preset)}
               className={`rounded-lg border px-4 py-2 ${
                 amount === preset
-                  ? "border-brand-brown bg-brand-cream text-brand-brown"
+                  ? "border-brand-orange bg-brand-cream text-brand-orange"
                   : "border-zinc-300 text-zinc-700"
               }`}
             >
@@ -80,7 +80,7 @@ export function DonationForm() {
             onClick={() => setAmount("custom")}
             className={`rounded-lg border px-4 py-2 ${
               amount === "custom"
-                ? "border-brand-brown bg-brand-cream text-brand-brown"
+                ? "border-brand-orange bg-brand-cream text-brand-orange"
                 : "border-zinc-300 text-zinc-700"
             }`}
           >
@@ -103,7 +103,7 @@ export function DonationForm() {
       <button
         type="submit"
         disabled={isPending}
-        className="rounded-full bg-brand-brown px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-brand-brown-dark hover:shadow-lg disabled:opacity-60 disabled:hover:scale-100"
+        className="rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-brand-orange-dark hover:shadow-lg disabled:opacity-60 disabled:hover:scale-100"
       >
         {isPending ? "Đang gửi..." : "Ủng hộ ngay"}
       </button>

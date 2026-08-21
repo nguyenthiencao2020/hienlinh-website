@@ -50,7 +50,7 @@ export default async function ProgramsPage() {
                   <p className="mt-2 text-sm text-zinc-600">{program.summary}</p>
                   <Link
                     href={`/hoat-dong/${program.slug}`}
-                    className="mt-3 inline-block rounded-full bg-brand-brown px-4 py-1.5 text-xs font-semibold text-white transition-transform duration-300 hover:scale-105 hover:bg-brand-brown-dark"
+                    className="mt-3 inline-block rounded-full bg-brand-orange px-4 py-1.5 text-xs font-semibold text-white transition-transform duration-300 hover:scale-105 hover:bg-brand-orange-dark"
                   >
                     Xem chi tiết →
                   </Link>
@@ -76,7 +76,7 @@ export default async function ProgramsPage() {
               <Reveal key={facility.id} delay={i * 60}>
                 <Link
                   href={`/co-so/${facility.slug}`}
-                  className="group block overflow-hidden rounded-2xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-brown/50 hover:shadow-lg"
+                  className="group block overflow-hidden rounded-2xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-orange/50 hover:shadow-lg"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image

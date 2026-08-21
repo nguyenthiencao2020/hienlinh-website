@@ -52,7 +52,7 @@ export default async function FacilityPage({
           {program && (
             <Link
               href={`/hoat-dong/${program.slug}`}
-              className="mt-8 inline-block rounded-full bg-brand-brown px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-brand-brown-dark hover:shadow-lg"
+              className="mt-8 inline-block rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-brand-orange-dark hover:shadow-lg"
             >
               Thuộc lĩnh vực {program.name} →
             </Link>
