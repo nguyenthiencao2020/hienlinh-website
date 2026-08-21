@@ -75,7 +75,7 @@ export default async function SearchPage({
                       <ul className="mt-2 space-y-1">
                         {programs.map((p) => (
                           <li key={p.id}>
-                            <Link href={`/hoat-dong/${p.slug}`} className="text-brand-green-dark hover:underline">
+                            <Link href={`/hoat-dong/${p.slug}`} className="text-brand-green hover:underline">
                               {p.name}
                             </Link>
                           </li>
@@ -91,7 +91,7 @@ export default async function SearchPage({
                       <ul className="mt-2 space-y-1">
                         {facilities.map((f) => (
                           <li key={f.id}>
-                            <Link href={`/co-so/${f.slug}`} className="text-brand-green-dark hover:underline">
+                            <Link href={`/co-so/${f.slug}`} className="text-brand-green hover:underline">
                               {f.name}
                             </Link>
                           </li>
@@ -107,7 +107,7 @@ export default async function SearchPage({
                       <ul className="mt-2 space-y-1">
                         {news.map((n) => (
                           <li key={n.id}>
-                            <Link href={`/tin-tuc/${n.slug}`} className="text-brand-green-dark hover:underline">
+                            <Link href={`/tin-tuc/${n.slug}`} className="text-brand-green hover:underline">
                               {n.title}
                             </Link>
                           </li>

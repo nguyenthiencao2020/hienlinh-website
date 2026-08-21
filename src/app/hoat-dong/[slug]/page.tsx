@@ -57,7 +57,7 @@ export default async function ProgramPage({
       {!!facilities?.length && (
         <section className="mx-auto mb-16 max-w-5xl px-6">
           <Reveal>
-            <h2 className="text-xl font-bold text-brand-green-dark">Cơ sở liên quan</h2>
+            <h2 className="text-xl font-bold text-brand-green">Cơ sở liên quan</h2>
           </Reveal>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {facilities.map((facility, i) => (
@@ -79,7 +79,7 @@ export default async function ProgramPage({
                       sizes="(min-width: 1024px) 33vw, 50vw"
                     />
                   </div>
-                  <p className="p-3 text-sm font-medium text-brand-green-dark">{facility.name}</p>
+                  <p className="p-3 text-sm font-medium text-brand-green">{facility.name}</p>
                 </Link>
               </Reveal>
             ))}

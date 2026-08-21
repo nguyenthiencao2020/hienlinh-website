@@ -58,7 +58,7 @@ export default async function Home() {
             >
               <Link
                 href="/about"
-                className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-green-dark transition-all duration-300 hover:scale-105 hover:bg-zinc-100 hover:shadow-lg"
+                className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-green transition-all duration-300 hover:scale-105 hover:bg-zinc-100 hover:shadow-lg"
               >
                 Khám phá thêm
               </Link>
@@ -89,7 +89,7 @@ export default async function Home() {
             <p className="text-sm font-semibold uppercase tracking-wide text-brand-brown">
               Chúng tôi là ai?
             </p>
-            <h2 className="mt-2 text-3xl font-bold text-brand-green-dark">
+            <h2 className="mt-2 text-3xl font-bold text-brand-green">
               DNXH Hiển Linh
             </h2>
             <p className="mt-4 text-zinc-600">
@@ -118,7 +118,7 @@ export default async function Home() {
             <p className="text-sm font-semibold uppercase tracking-wide text-brand-brown">
               Các lĩnh vực hoạt động cốt lõi
             </p>
-            <h2 className="mt-2 text-3xl font-bold text-brand-green-dark">
+            <h2 className="mt-2 text-3xl font-bold text-brand-green">
               Hệ Sinh Thái Hiển Linh
             </h2>
             <p className="mt-4 text-zinc-600">
@@ -143,7 +143,7 @@ export default async function Home() {
                       sizes="80px"
                     />
                   </div>
-                  <h3 className="mt-4 font-semibold text-brand-green-dark">{program.name}</h3>
+                  <h3 className="mt-4 font-semibold text-brand-green">{program.name}</h3>
                   <p className="mt-2 text-sm text-zinc-600">{program.summary}</p>
                   <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-brand-orange">
                     Xem chi tiết
@@ -182,7 +182,7 @@ export default async function Home() {
           </p>
           <Link
             href="/about"
-            className="mt-6 inline-block rounded-full border border-white px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-brand-green-dark"
+            className="mt-6 inline-block rounded-full border border-white px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-brand-green"
           >
             Về chúng tôi
           </Link>
@@ -193,7 +193,7 @@ export default async function Home() {
       <section className="px-6 py-20">
         <div className="mx-auto max-w-7xl">
           <Reveal className="flex items-end justify-between">
-            <h2 className="text-3xl font-bold text-brand-green-dark">Tin tức &amp; Hoạt động</h2>
+            <h2 className="text-3xl font-bold text-brand-green">Tin tức &amp; Hoạt động</h2>
             <Link href="/tin-tuc" className="text-sm font-medium text-brand-orange hover:underline">
               Xem tất cả →
             </Link>
@@ -217,7 +217,7 @@ export default async function Home() {
                     </div>
                   )}
                   <div className="p-5">
-                    <h3 className="font-semibold text-brand-green-dark">{post.title}</h3>
+                    <h3 className="font-semibold text-brand-green">{post.title}</h3>
                     <p className="mt-2 text-sm text-zinc-600 line-clamp-3">{post.excerpt}</p>
                   </div>
                 </Link>

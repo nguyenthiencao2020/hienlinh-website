@@ -27,7 +27,7 @@ export default async function JoinPage() {
       <section className="bg-brand-cream px-6 py-14">
         <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2">
           <Reveal>
-            <h2 className="text-xl font-bold text-brand-green-dark">
+            <h2 className="text-xl font-bold text-brand-green">
               Trở Thành Tình Nguyện Viên
             </h2>
             <p className="mt-3 text-zinc-600">
@@ -50,7 +50,7 @@ export default async function JoinPage() {
             delay={150}
             className="rounded-2xl bg-white p-6 shadow-sm transition-shadow duration-300 hover:shadow-lg"
           >
-            <h3 className="font-semibold text-brand-green-dark">
+            <h3 className="font-semibold text-brand-green">
               Đăng Ký Trở Thành Tình Nguyện Viên
             </h3>
             <div className="mt-4">
@@ -63,7 +63,7 @@ export default async function JoinPage() {
       <section id="quyen-gop" className="px-6 py-14">
         <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2">
           <Reveal>
-            <h2 className="text-xl font-bold text-brand-green-dark">Quyên Góp / Ủng Hộ</h2>
+            <h2 className="text-xl font-bold text-brand-green">Quyên Góp / Ủng Hộ</h2>
             <p className="mt-3 text-zinc-600">
               Mỗi sự đóng góp, dù nhỏ bé, đều mang lại những thay đổi lớn lao
               cho cuộc sống của các em nhỏ và cộng đồng có hoàn cảnh khó khăn.
@@ -87,7 +87,7 @@ export default async function JoinPage() {
 
       <section className="bg-brand-cream px-6 py-14">
         <Reveal className="mx-auto block max-w-5xl text-center">
-          <h2 className="text-xl font-bold text-brand-green-dark">Đối Tác &amp; Tài Trợ</h2>
+          <h2 className="text-xl font-bold text-brand-green">Đối Tác &amp; Tài Trợ</h2>
           {partners?.length ? (
             <div className="mt-8 flex flex-wrap items-center justify-center gap-8">
               {partners.map((partner) => (

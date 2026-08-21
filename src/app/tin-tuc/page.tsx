@@ -89,7 +89,7 @@ export default async function NewsListPage({
                         {new Date(post.published_at).toLocaleDateString("vi-VN")}
                       </p>
                     )}
-                    <h2 className="mt-1 text-lg font-semibold text-brand-green-dark">
+                    <h2 className="mt-1 text-lg font-semibold text-brand-green">
                       {post.title}
                     </h2>
                     <p className="mt-2 text-sm text-zinc-600 line-clamp-2">{post.excerpt}</p>

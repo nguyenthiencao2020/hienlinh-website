@@ -13,7 +13,7 @@ export default function ContactPage() {
       <section className="px-6 py-16">
         <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2">
           <Reveal className="rounded-2xl border border-zinc-200 p-6 transition-shadow duration-300 hover:shadow-lg">
-            <h2 className="text-lg font-bold text-brand-green-dark">Thông Tin Liên Hệ</h2>
+            <h2 className="text-lg font-bold text-brand-green">Thông Tin Liên Hệ</h2>
             <ul className="mt-4 space-y-3 text-sm text-zinc-600">
               <li>Địa chỉ: {SITE.address}</li>
               <li>Điện thoại: {SITE.phone}</li>
@@ -26,7 +26,7 @@ export default function ContactPage() {
             </p>
           </Reveal>
           <Reveal delay={150} className="rounded-2xl border border-zinc-200 p-6 transition-shadow duration-300 hover:shadow-lg">
-            <h2 className="text-lg font-bold text-brand-green-dark">Gửi Tin Nhắn Cho Chúng Tôi</h2>
+            <h2 className="text-lg font-bold text-brand-green">Gửi Tin Nhắn Cho Chúng Tôi</h2>
             <div className="mt-4">
               <ContactForm />
             </div>
