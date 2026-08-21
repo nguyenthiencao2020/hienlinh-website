@@ -18,12 +18,21 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <Link
-          href="/tham-gia#quyen-gop"
-          className="shrink-0 rounded-full bg-brand-orange px-4 py-2 text-sm font-semibold text-white hover:bg-brand-orange-dark"
-        >
-          ♥ Quyên Góp
-        </Link>
+        <div className="flex shrink-0 items-center gap-3">
+          <Link
+            href="/tim-kiem"
+            aria-label="Tìm kiếm"
+            className="text-zinc-500 hover:text-brand-green"
+          >
+            🔍
+          </Link>
+          <Link
+            href="/tham-gia#quyen-gop"
+            className="rounded-full bg-brand-orange px-4 py-2 text-sm font-semibold text-white hover:bg-brand-orange-dark"
+          >
+            ♥ Quyên Góp
+          </Link>
+        </div>
       </div>
     </header>
   );

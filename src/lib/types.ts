@@ -18,10 +18,44 @@ export type NewsPost = {
   content: string;
   cover_image_url: string | null;
   category: string | null;
+  is_featured: boolean;
+  is_success_story: boolean;
   published: boolean;
   published_at: string | null;
   created_at: string;
   updated_at: string;
+};
+
+export type Facility = {
+  id: string;
+  slug: string;
+  name: string;
+  program_slug: string | null;
+  address: string | null;
+  description: string;
+  cover_image_url: string | null;
+  sort_order: number;
+  created_at: string;
+  updated_at: string;
+};
+
+export type TeamMember = {
+  id: string;
+  full_name: string;
+  role: string;
+  photo_url: string | null;
+  bio: string;
+  sort_order: number;
+  created_at: string;
+};
+
+export type Partner = {
+  id: string;
+  name: string;
+  logo_url: string | null;
+  website_url: string | null;
+  sort_order: number;
+  created_at: string;
 };
 
 export type ContactMessage = {

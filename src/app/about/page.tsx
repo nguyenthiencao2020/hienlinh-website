@@ -1,5 +1,9 @@
 import Image from "next/image";
 import { PageHero } from "@/components/page-hero";
+import { createClient } from "@/lib/supabase/server";
+import type { TeamMember } from "@/lib/types";
+
+export const revalidate = 60;
 
 const CORE_VALUES = [
   {
@@ -24,7 +28,14 @@ const CORE_VALUES = [
   },
 ];
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const supabase = await createClient();
+  const { data: team } = await supabase
+    .from("team_members")
+    .select("*")
+    .order("sort_order", { ascending: true })
+    .returns<TeamMember[]>();
+
   return (
     <div>
       <PageHero title="Về Chúng Tôi" crumbLabel="Giới Thiệu" />
@@ -97,6 +108,40 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="bg-brand-cream px-6 py-16">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="text-center text-2xl font-bold text-brand-green-dark">
+            Đội Ngũ Của Chúng Tôi
+          </h2>
+          {team?.length ? (
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {team.map((member) => (
+                <div key={member.id} className="rounded-2xl bg-white p-6 text-center">
+                  <div className="relative mx-auto h-24 w-24 overflow-hidden rounded-full bg-zinc-100">
+                    {member.photo_url && (
+                      <Image
+                        src={member.photo_url}
+                        alt={member.full_name}
+                        fill
+                        className="object-cover"
+                        sizes="96px"
+                      />
+                    )}
+                  </div>
+                  <h3 className="mt-4 font-semibold text-brand-green-dark">{member.full_name}</h3>
+                  <p className="text-sm text-brand-orange">{member.role}</p>
+                  {member.bio && <p className="mt-2 text-sm text-zinc-600">{member.bio}</p>}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="mt-6 text-center text-sm text-zinc-500">
+              Thông tin đội ngũ sẽ được cập nhật sau.
+            </p>
+          )}
         </div>
       </section>
     </div>
