@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
@@ -29,6 +30,7 @@ export default function AdminLoginPage() {
   return (
     <div className="mx-auto flex min-h-[70vh] max-w-sm items-center px-6">
       <form onSubmit={handleSubmit} className="w-full space-y-4">
+        <Image src="/brand/logo.webp" alt="Hiển Linh" width={140} height={65} className="h-10 w-auto" />
         <h1 className="text-2xl font-bold text-zinc-900">Đăng nhập quản trị</h1>
         <div>
           <label className="block text-sm font-medium text-zinc-700">Email</label>

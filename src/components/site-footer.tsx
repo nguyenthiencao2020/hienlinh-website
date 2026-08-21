@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { FOOTER_LINKS, SITE } from "@/lib/site-config";
 import { NewsletterForm } from "./newsletter-form";
@@ -7,8 +8,7 @@ export function SiteFooter() {
     <footer className="bg-brand-green-dark text-zinc-300">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <p className="text-lg font-bold text-white">{SITE.name.toUpperCase()}</p>
-          <p className="text-xs text-zinc-400">{SITE.tagline}</p>
+          <Image src="/brand/logo-full-white.webp" alt={SITE.fullName} width={210} height={126} className="h-auto w-44" />
           <p className="mt-4 text-sm text-zinc-400">
             Hiển Linh hoạt động vì một cộng đồng nhân ái, chung tay mang đến cuộc
             sống tốt đẹp hơn cho trẻ em và những người yếu thế.
