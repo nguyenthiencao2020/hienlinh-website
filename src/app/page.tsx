@@ -64,7 +64,7 @@ export default async function Home() {
               </Link>
               <Link
                 href="/tham-gia"
-                className="rounded-full bg-brand-brown px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-brand-brown-dark hover:shadow-lg hover:shadow-brand-brown/30"
+                className="rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-brand-orange-dark hover:shadow-lg hover:shadow-brand-orange/30"
               >
                 Trở thành tình nguyện viên
               </Link>
@@ -86,7 +86,7 @@ export default async function Home() {
             />
           </Reveal>
           <Reveal delay={150}>
-            <p className="text-sm font-semibold uppercase tracking-wide text-brand-brown">
+            <p className="text-sm font-semibold uppercase tracking-wide text-brand-orange">
               Chúng tôi là ai?
             </p>
             <h2 className="mt-2 text-3xl font-bold text-brand-green-dark">
@@ -115,7 +115,7 @@ export default async function Home() {
       <section className="bg-brand-cream px-6 py-20">
         <div className="mx-auto max-w-7xl">
           <Reveal className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-wide text-brand-brown">
+            <p className="text-sm font-semibold uppercase tracking-wide text-brand-orange">
               Các lĩnh vực hoạt động cốt lõi
             </p>
             <h2 className="mt-2 text-3xl font-bold text-brand-green-dark">
@@ -134,7 +134,7 @@ export default async function Home() {
                   href={`/hoat-dong/${program.slug}`}
                   className="group block rounded-2xl bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                 >
-                  <div className="relative mx-auto h-20 w-20 overflow-hidden rounded-full ring-4 ring-transparent transition-all duration-300 group-hover:ring-brand-brown/20">
+                  <div className="relative mx-auto h-20 w-20 overflow-hidden rounded-full ring-4 ring-transparent transition-all duration-300 group-hover:ring-brand-orange/20">
                     <Image
                       src={program.cover_image_url || PROGRAM_FALLBACK_IMAGES[program.slug] || "/images/hero-page.webp"}
                       alt={program.name}
@@ -145,7 +145,7 @@ export default async function Home() {
                   </div>
                   <h3 className="mt-4 font-semibold text-brand-green-dark">{program.name}</h3>
                   <p className="mt-2 text-sm text-zinc-600">{program.summary}</p>
-                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-brand-brown">
+                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-brand-orange">
                     Xem chi tiết
                     <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </span>
@@ -194,7 +194,7 @@ export default async function Home() {
         <div className="mx-auto max-w-7xl">
           <Reveal className="flex items-end justify-between">
             <h2 className="text-3xl font-bold text-brand-green-dark">Tin tức &amp; Hoạt động</h2>
-            <Link href="/tin-tuc" className="text-sm font-medium text-brand-brown hover:underline">
+            <Link href="/tin-tuc" className="text-sm font-medium text-brand-orange hover:underline">
               Xem tất cả →
             </Link>
           </Reveal>
@@ -203,7 +203,7 @@ export default async function Home() {
               <Reveal key={post.id} delay={i * 80}>
                 <Link
                   href={`/tin-tuc/${post.slug}`}
-                  className="group block overflow-hidden rounded-xl border border-zinc-200 transition-all duration-300 hover:-translate-y-1 hover:border-brand-brown/50 hover:shadow-xl"
+                  className="group block overflow-hidden rounded-xl border border-zinc-200 transition-all duration-300 hover:-translate-y-1 hover:border-brand-orange/50 hover:shadow-xl"
                 >
                   {post.cover_image_url && (
                     <div className="relative aspect-[16/10] overflow-hidden">

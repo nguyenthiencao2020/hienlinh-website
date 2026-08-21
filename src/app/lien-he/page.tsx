@@ -21,8 +21,8 @@ export default function ContactPage() {
             </ul>
             <p className="mt-4 text-sm text-zinc-600">
               Mạng xã hội:{" "}
-              <a href={SITE.socials.facebook} className="text-brand-brown hover:underline">Facebook</a>,{" "}
-              <a href={SITE.socials.youtube} className="text-brand-brown hover:underline">YouTube</a>
+              <a href={SITE.socials.facebook} className="text-brand-orange hover:underline">Facebook</a>,{" "}
+              <a href={SITE.socials.youtube} className="text-brand-orange hover:underline">YouTube</a>
             </p>
           </Reveal>
           <Reveal delay={150} className="rounded-2xl border border-zinc-200 p-6 transition-shadow duration-300 hover:shadow-lg">
