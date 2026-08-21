@@ -71,7 +71,7 @@ export function VolunteerForm() {
       <button
         type="submit"
         disabled={isPending}
-        className="rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-white hover:bg-brand-orange-dark disabled:opacity-60"
+        className="rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-brand-orange-dark hover:shadow-lg disabled:opacity-60 disabled:hover:scale-100"
       >
         {isPending ? "Đang gửi..." : "Đăng ký ngay"}
       </button>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { PageHero } from "@/components/page-hero";
+import { Reveal } from "@/components/reveal";
 import { createClient } from "@/lib/supabase/server";
 import type { TeamMember } from "@/lib/types";
 
@@ -42,16 +43,16 @@ export default async function AboutPage() {
 
       <section className="px-6 py-16">
         <div className="mx-auto grid max-w-6xl gap-10 sm:grid-cols-2 sm:items-center">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+          <Reveal className="relative aspect-[4/3] overflow-hidden rounded-2xl">
             <Image
               src="/images/about-story.webp"
               alt="Đồng hành cùng cộng đồng"
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-700 hover:scale-105"
               sizes="(min-width: 640px) 50vw, 100vw"
             />
-          </div>
-          <div>
+          </Reveal>
+          <Reveal delay={150}>
             <h1 className="text-2xl font-bold text-brand-green-dark">Câu Chuyện Của Chúng Tôi</h1>
             <p className="mt-4 text-zinc-600">
               Khởi đi từ tinh thần lắng nghe những dấu chỉ của thời đại, chúng
@@ -68,20 +69,23 @@ export default async function AboutPage() {
               ưu tiên phục vụ trẻ em, người trẻ và những người dễ bị tổn
               thương đang ở bên lề xã hội.
             </p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="bg-brand-cream px-6 py-14">
         <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2">
-          <div className="rounded-2xl bg-white p-8">
+          <Reveal className="rounded-2xl bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
             <h2 className="text-xl font-bold text-brand-green-dark">Tầm Nhìn</h2>
             <p className="mt-3 text-zinc-600">
               Một xã hội nơi mỗi người đều được sống trong phẩm giá, tình
               thương, và hy vọng; ưu tiên người dễ bị tổn thương.
             </p>
-          </div>
-          <div className="rounded-2xl bg-white p-8">
+          </Reveal>
+          <Reveal
+            delay={120}
+            className="rounded-2xl bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+          >
             <h2 className="text-xl font-bold text-brand-green-dark">Sứ Mệnh</h2>
             <p className="mt-3 text-zinc-600">
               DNXH Hiển Linh lan tỏa tinh thần FMM qua giáo dục, đồng hành,
@@ -90,22 +94,26 @@ export default async function AboutPage() {
               Lưu trú — để khơi dậy và phát triển tiềm năng, thắp sáng hy vọng
               và kiến tạo một xã hội hòa nhập, bền vững.
             </p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="px-6 py-16">
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-center text-2xl font-bold text-brand-green-dark">
-            Giá Trị Cốt Lõi
-          </h2>
+          <Reveal>
+            <h2 className="text-center text-2xl font-bold text-brand-green-dark">
+              Giá Trị Cốt Lõi
+            </h2>
+          </Reveal>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {CORE_VALUES.map((value) => (
-              <div key={value.vi} className="rounded-2xl border border-zinc-200 p-6 text-center">
-                <h3 className="font-semibold text-brand-green-dark">{value.vi}</h3>
-                <p className="text-xs italic text-brand-orange">{value.en}</p>
-                <p className="mt-3 text-sm text-zinc-600">{value.desc}</p>
-              </div>
+            {CORE_VALUES.map((value, i) => (
+              <Reveal key={value.vi} delay={i * 80}>
+                <div className="h-full rounded-2xl border border-zinc-200 p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand-orange/30 hover:shadow-lg">
+                  <h3 className="font-semibold text-brand-green-dark">{value.vi}</h3>
+                  <p className="text-xs italic text-brand-orange">{value.en}</p>
+                  <p className="mt-3 text-sm text-zinc-600">{value.desc}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -113,13 +121,19 @@ export default async function AboutPage() {
 
       <section className="bg-brand-cream px-6 py-16">
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-center text-2xl font-bold text-brand-green-dark">
-            Đội Ngũ Của Chúng Tôi
-          </h2>
+          <Reveal>
+            <h2 className="text-center text-2xl font-bold text-brand-green-dark">
+              Đội Ngũ Của Chúng Tôi
+            </h2>
+          </Reveal>
           {team?.length ? (
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {team.map((member) => (
-                <div key={member.id} className="rounded-2xl bg-white p-6 text-center">
+              {team.map((member, i) => (
+                <Reveal
+                  key={member.id}
+                  delay={i * 80}
+                  className="rounded-2xl bg-white p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                >
                   <div className="relative mx-auto h-24 w-24 overflow-hidden rounded-full bg-zinc-100">
                     {member.photo_url && (
                       <Image
@@ -134,7 +148,7 @@ export default async function AboutPage() {
                   <h3 className="mt-4 font-semibold text-brand-green-dark">{member.full_name}</h3>
                   <p className="text-sm text-brand-orange">{member.role}</p>
                   {member.bio && <p className="mt-2 text-sm text-zinc-600">{member.bio}</p>}
-                </div>
+                </Reveal>
               ))}
             </div>
           ) : (
