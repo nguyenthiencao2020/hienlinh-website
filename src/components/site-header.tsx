@@ -6,9 +6,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-black/5 bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-3">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/">
           <Image src="/brand/logo.webp" alt={SITE.fullName} width={160} height={74} priority className="h-11 w-auto" />
-          <span className="hidden text-[11px] text-zinc-500 sm:block">{SITE.tagline}</span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm font-medium text-zinc-700 lg:flex">
           {MAIN_NAV.map((item) => (
