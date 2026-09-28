@@ -43,7 +43,7 @@ export default async function ProgramPage({
           </p>
           <p className="mt-4 text-lg text-zinc-600">{program.summary}</p>
           {program.content && (
-            <div className="prose prose-zinc mt-8 whitespace-pre-wrap">{program.content}</div>
+            <div className="prose prose-zinc mt-8 whitespace-pre-wrap text-justify">{program.content}</div>
           )}
           <Link
             href="/tham-gia"
