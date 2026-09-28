@@ -88,20 +88,24 @@ export default async function AboutPage() {
 
           <Reveal delay={100} className="grid gap-5">
             <div className="rounded-2xl bg-brand-green/10 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-brand-green shadow-sm">
-                <UsersIcon className="h-5 w-5" />
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-brand-green shadow-sm">
+                  <UsersIcon className="h-5 w-5" />
+                </div>
+                <h2 className="text-xl font-bold text-brand-green">Tầm Nhìn</h2>
               </div>
-              <h2 className="mt-4 text-xl font-bold text-brand-green">Tầm Nhìn</h2>
-              <p className="mt-2 text-sm text-zinc-600">
+              <p className="mt-3 text-sm text-zinc-600">
                 Một xã hội nơi mỗi người đều được sống trong phẩm giá, tình
                 thương, và hy vọng; ưu tiên người dễ bị tổn thương.
               </p>
             </div>
             <div className="rounded-2xl bg-brand-orange/10 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-brand-orange shadow-sm">
-                <TargetIcon className="h-5 w-5" />
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-brand-orange shadow-sm">
+                  <TargetIcon className="h-5 w-5" />
+                </div>
+                <h2 className="text-xl font-bold text-brand-green">Sứ Mệnh</h2>
               </div>
-              <h2 className="mt-4 text-xl font-bold text-brand-green">Sứ Mệnh</h2>
               <p className="mt-2 text-sm text-zinc-600">
                 DNXH Hiển Linh lan tỏa tinh thần FMM qua giáo dục, đồng hành,
                 chăm sóc toàn diện cho trẻ em, người trẻ; đặc biệt người dễ bị
@@ -144,13 +148,17 @@ export default async function AboutPage() {
             {CORE_VALUES.map((value, i) => (
               <Reveal key={value.vi} delay={i * 80}>
                 <div className="relative h-full overflow-hidden rounded-2xl bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                  <div
-                    className={`flex h-11 w-11 items-center justify-center rounded-full ${value.tint} ${value.text}`}
-                  >
-                    <value.Icon className="h-5 w-5" />
+                  <div className="flex items-center gap-3">
+                    <div
+                      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full ${value.tint} ${value.text}`}
+                    >
+                      <value.Icon className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-brand-green">{value.vi}</h3>
+                      <p className="text-xs italic uppercase tracking-wide text-brand-brown">{value.en}</p>
+                    </div>
                   </div>
-                  <h3 className="mt-4 font-semibold text-brand-green">{value.vi}</h3>
-                  <p className="text-xs italic uppercase tracking-wide text-brand-brown">{value.en}</p>
                   <p className="mt-3 text-sm text-zinc-600">{value.desc}</p>
                 </div>
               </Reveal>
