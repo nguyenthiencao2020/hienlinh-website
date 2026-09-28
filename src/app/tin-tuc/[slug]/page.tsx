@@ -47,7 +47,8 @@ export default async function NewsDetailPage({
               <Image src={post.cover_image_url} alt={post.title} fill className="object-cover" sizes="768px" />
             </div>
           )}
-          <div className="prose prose-zinc mt-8 whitespace-pre-wrap">{post.content}</div>
+          <h1 className="mt-6 text-2xl font-bold text-brand-green sm:text-3xl">{post.title}</h1>
+          <div className="prose prose-zinc mt-6 whitespace-pre-wrap text-justify">{post.content}</div>
         </article>
       </Reveal>
     </div>
