@@ -98,6 +98,80 @@ export function SendIcon({ className }: { className?: string }) {
   );
 }
 
+export function BookIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M4 5.5c0-.8.6-1.4 1.4-1.5 2-.2 5 .1 6.6 1.6 1.6-1.5 4.6-1.8 6.6-1.6.8.1 1.4.7 1.4 1.5v12.6c0 .9-.8 1.6-1.7 1.5-2-.2-4.7 0-6.3 1.4-1.6-1.4-4.3-1.6-6.3-1.4-.9.1-1.7-.6-1.7-1.5V5.5Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+      <path d="M12 5.6v13.4" stroke="currentColor" strokeWidth="1.6" />
+    </svg>
+  );
+}
+
+export function HeartPulseIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M12.1 19.2C7 15.4 3 12.2 3 8.4 3 5.8 5 4 7.4 4c1.4 0 2.8.7 3.7 1.9A4.5 4.5 0 0 1 14.8 4c1.7 0 3.2.9 4 2.2H21l-2.5 5-2-3.3-1.7 3.3h-2.6l-.9-1.8-.9 1.8H8.6"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12.1 19.2c1.9-1.4 3.7-2.8 5.2-4.2"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+export function HomeIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M4 11.5 12 4l8 7.5"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6 10v8.5a1 1 0 0 0 1 1h3.5v-5h3v5H17a1 1 0 0 0 1-1V10"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function UsersIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <circle cx="9" cy="8.5" r="2.8" stroke="currentColor" strokeWidth="1.6" />
+      <path
+        d="M3.5 19c.5-3 2.7-4.8 5.5-4.8s5 1.8 5.5 4.8"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+      <path
+        d="M15 8.7a2.6 2.6 0 1 1 2.8 4.3M16.2 14.3c2.3.3 4 1.9 4.3 4.2"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 export function HeartIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 20 20" fill="currentColor" className={className} aria-hidden="true">

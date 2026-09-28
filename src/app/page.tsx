@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { PROGRAM_FALLBACK_IMAGES } from "@/lib/program-images";
+import { PROGRAM_FALLBACK_IMAGES, PROGRAM_ICONS } from "@/lib/program-images";
+import { LeafIcon } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
 import type { NewsPost, Program } from "@/lib/types";
 
@@ -114,44 +115,53 @@ export default async function Home() {
       {/* Section 3: Hệ sinh thái */}
       <section className="bg-brand-cream px-6 py-20">
         <div className="mx-auto max-w-7xl">
-          <Reveal className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-wide text-brand-brown">
-              Các lĩnh vực hoạt động cốt lõi
-            </p>
-            <h2 className="mt-2 text-3xl font-bold text-brand-green">
-              Hệ Sinh Thái Hiển Linh
-            </h2>
-            <p className="mt-4 text-zinc-600">
-              Mỗi hoạt động là một điểm chạm yêu thương — đồng hành — nâng đỡ,
-              thông qua giáo dục, y tế, hỗ trợ tâm lý và các hoạt động xã hội,
-              thiện nguyện.
+          <Reveal className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-brand-brown">
+                — Hoạt động của chúng tôi
+              </p>
+              <h2 className="mt-2 text-3xl font-bold text-brand-green">
+                Các Lĩnh Vực Hoạt Động
+              </h2>
+            </div>
+            <p className="max-w-sm text-sm text-zinc-600 sm:text-right">
+              Chúng tôi tập trung vào 5 lĩnh vực chính, nhằm đồng hành cùng trẻ
+              em và cộng đồng trên hành trình phát triển bền vững.
             </p>
           </Reveal>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-            {(programs ?? []).map((program, i) => (
-              <Reveal key={program.id} delay={i * 80}>
-                <Link
-                  href={`/hoat-dong/${program.slug}`}
-                  className="group block rounded-2xl bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                >
-                  <div className="relative mx-auto h-20 w-20 overflow-hidden rounded-full ring-4 ring-transparent transition-all duration-300 group-hover:ring-brand-orange/20">
-                    <Image
-                      src={program.cover_image_url || PROGRAM_FALLBACK_IMAGES[program.slug] || "/images/hero-page.webp"}
-                      alt={program.name}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      sizes="80px"
-                    />
-                  </div>
-                  <h3 className="mt-4 font-semibold text-brand-green">{program.name}</h3>
-                  <p className="mt-2 text-sm text-zinc-600">{program.summary}</p>
-                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-brand-orange">
-                    Xem chi tiết
-                    <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {(programs ?? []).map((program, i) => {
+              const Icon = PROGRAM_ICONS[program.slug] ?? LeafIcon;
+              return (
+                <Reveal key={program.id} delay={i * 80}>
+                  <Link
+                    href={`/hoat-dong/${program.slug}`}
+                    className="group flex h-full overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                  >
+                    <div className="relative w-2/5 shrink-0 overflow-hidden">
+                      <Image
+                        src={program.cover_image_url || PROGRAM_FALLBACK_IMAGES[program.slug] || "/images/hero-page.webp"}
+                        alt={program.name}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        sizes="(min-width: 1024px) 200px, (min-width: 640px) 30vw, 40vw"
+                      />
+                    </div>
+                    <div className="flex flex-1 flex-col justify-center gap-2 p-5">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-green text-white">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <h3 className="font-semibold text-brand-green">{program.name}</h3>
+                      <p className="text-sm text-zinc-600">{program.summary}</p>
+                      <span className="mt-1 inline-flex w-fit items-center gap-1 rounded-full bg-brand-green px-4 py-1.5 text-xs font-semibold text-white transition-colors duration-300 group-hover:bg-brand-green-dark">
+                        Xem chi tiết
+                        <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                      </span>
+                    </div>
+                  </Link>
+                </Reveal>
+              );
+            })}
             {!programs?.length && (
               <p className="text-sm text-zinc-500">
                 Chưa có dữ liệu — cấu hình Supabase để hiển thị các mảng hoạt động.
