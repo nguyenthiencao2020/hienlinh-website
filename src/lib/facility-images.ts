@@ -5,4 +5,7 @@ export const FACILITY_FALLBACK_IMAGES: Record<string, string> = {
   "mam-non-hien-linh": "/images/facilities/mam-non-hien-linh.webp",
   "noi-tru-thanh-gia": "/images/facilities/noi-tru-thanh-gia.webp",
   "phong-kham-hy-vong": "/images/facilities/phong-kham-hy-vong.webp",
+  "luu-xa-emmanuel": "/images/facilities/luu-xa-emmanuel.webp",
+  "mam-non-son-ca": "/images/facilities/mam-non-son-ca.webp",
+  "noi-tru-suoi-dau": "/images/facilities/noi-tru-suoi-dau.webp",
 };
