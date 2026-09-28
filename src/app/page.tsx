@@ -129,11 +129,15 @@ export default async function Home() {
               em và cộng đồng trên hành trình phát triển bền vững.
             </p>
           </Reveal>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 flex flex-wrap justify-center gap-6">
             {(programs ?? []).map((program, i) => {
               const Icon = PROGRAM_ICONS[program.slug] ?? LeafIcon;
               return (
-                <Reveal key={program.id} delay={i * 80}>
+                <Reveal
+                  key={program.id}
+                  delay={i * 80}
+                  className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
+                >
                   <Link
                     href={`/hoat-dong/${program.slug}`}
                     className="group flex h-full overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"

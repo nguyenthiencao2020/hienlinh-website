@@ -26,11 +26,15 @@ export default async function ProgramsPage() {
           <Reveal>
             <h2 className="text-xl font-bold text-brand-green">Các lĩnh vực hoạt động</h2>
           </Reveal>
-          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 flex flex-wrap justify-center gap-6">
             {(programs ?? []).map((program, i) => {
               const Icon = PROGRAM_ICONS[program.slug] ?? LeafIcon;
               return (
-                <Reveal key={program.id} delay={i * 80}>
+                <Reveal
+                  key={program.id}
+                  delay={i * 80}
+                  className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
+                >
                   <Link
                     href={`/hoat-dong/${program.slug}`}
                     className="group flex h-full overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
@@ -77,9 +81,13 @@ export default async function ProgramsPage() {
           <Reveal>
             <h2 className="text-xl font-bold text-brand-green">Các cơ sở của chúng tôi</h2>
           </Reveal>
-          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 flex flex-wrap justify-center gap-6">
             {(facilities ?? []).map((facility, i) => (
-              <Reveal key={facility.id} delay={i * 60}>
+              <Reveal
+                key={facility.id}
+                delay={i * 60}
+                className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
+              >
                 <Link
                   href={`/co-so/${facility.slug}`}
                   className="group block overflow-hidden rounded-2xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-orange/50 hover:shadow-lg"
