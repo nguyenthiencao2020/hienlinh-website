@@ -152,10 +152,12 @@ export default async function Home() {
                       />
                     </div>
                     <div className="flex flex-1 flex-col justify-center gap-2 p-5">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-green text-white">
-                        <Icon className="h-5 w-5" />
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-green text-white">
+                          <Icon className="h-5 w-5" />
+                        </div>
+                        <h3 className="font-semibold text-brand-green">{program.name}</h3>
                       </div>
-                      <h3 className="font-semibold text-brand-green">{program.name}</h3>
                       <p className="text-sm text-zinc-600">{program.summary}</p>
                       <span className="mt-1 inline-flex w-fit items-center gap-1 rounded-full bg-brand-green px-4 py-1.5 text-xs font-semibold text-white transition-colors duration-300 group-hover:bg-brand-green-dark">
                         Xem chi tiết
