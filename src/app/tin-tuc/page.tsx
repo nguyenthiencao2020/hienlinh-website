@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/fade-image";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
@@ -70,7 +70,7 @@ export default async function NewsListPage({
               <Reveal key={post.id} delay={i * 70}>
                 <Link
                   href={`/tin-tuc/${post.slug}`}
-                  className="group block overflow-hidden rounded-xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-orange/50 hover:shadow-xl"
+                  className="group block overflow-hidden rounded-xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-xl hover:shadow-brand-green/15"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden bg-zinc-100">
                     {post.cover_image_url && (

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/fade-image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/page-hero";
@@ -48,7 +48,7 @@ export default async function ProgramPage({
           </p>
           <p className="mt-4 text-lg text-zinc-600">{program.summary}</p>
           {program.content && (
-            <div className="prose prose-zinc mt-8 whitespace-pre-wrap text-justify">{program.content}</div>
+            <div className="prose prose-zinc mt-8 max-w-none whitespace-pre-wrap text-justify">{program.content}</div>
           )}
           <Link
             href="/tham-gia"
@@ -69,7 +69,7 @@ export default async function ProgramPage({
               <Reveal key={facility.id} delay={i * 70}>
                 <Link
                   href={`/co-so/${facility.slug}`}
-                  className="group block overflow-hidden rounded-xl border border-zinc-200 transition-all duration-300 hover:-translate-y-1 hover:border-brand-orange/50 hover:shadow-lg"
+                  className="group block overflow-hidden rounded-xl border border-zinc-200 transition-all duration-300 hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-lg hover:shadow-brand-green/15"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/fade-image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/page-hero";
@@ -50,7 +50,7 @@ export default async function FacilityPage({
         <article>
           {facility.address && <p className="text-sm text-zinc-500">📍 {facility.address}</p>}
           {facility.description ? (
-            <div className="prose prose-zinc mt-4 whitespace-pre-wrap text-justify">{facility.description}</div>
+            <div className="prose prose-zinc mt-4 max-w-none whitespace-pre-wrap text-justify">{facility.description}</div>
           ) : (
             <p className="mt-4 text-zinc-600">Nội dung giới thiệu chi tiết sẽ được cập nhật sau.</p>
           )}

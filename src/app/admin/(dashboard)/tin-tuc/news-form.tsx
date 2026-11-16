@@ -1,6 +1,7 @@
 "use client";
 
 import { ImageUploadField } from "@/components/image-upload-field";
+import { RichTextEditor } from "@/components/rich-text-editor";
 import type { NewsPost } from "@/lib/types";
 
 export function NewsForm({
@@ -11,7 +12,7 @@ export function NewsForm({
   news?: NewsPost;
 }) {
   return (
-    <form action={action} className="max-w-2xl space-y-4">
+    <form action={action} className="max-w-3xl space-y-4">
       <div>
         <label className="block text-sm font-medium text-zinc-700">Tiêu đề *</label>
         <input
@@ -57,12 +58,7 @@ export function NewsForm({
       </div>
       <div>
         <label className="block text-sm font-medium text-zinc-700">Nội dung</label>
-        <textarea
-          name="content"
-          rows={10}
-          defaultValue={news?.content}
-          className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2"
-        />
+        <RichTextEditor name="content" defaultValue={news?.content} uploadFolder="news/content" />
       </div>
       <div className="space-y-2">
         <label className="flex items-center gap-2 text-sm text-zinc-700">

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { ViewTransition } from "react";
 import "./globals.css";
+import { BackToTop } from "@/components/back-to-top";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -14,11 +16,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="vi" className="h-full antialiased">
       <body className="min-h-full flex flex-col bg-white text-zinc-900">
         <noscript>
-          <style>{`.reveal { opacity: 1 !important; }`}</style>
+          <style>{`.reveal, .fade-img { opacity: 1 !important; }`}</style>
         </noscript>
         <SiteHeader />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1">
+          <ViewTransition>{children}</ViewTransition>
+        </main>
         <SiteFooter />
+        <BackToTop />
       </body>
     </html>
   );

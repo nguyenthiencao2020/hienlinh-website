@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/fade-image";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { createPublicClient } from "@/lib/supabase/public";

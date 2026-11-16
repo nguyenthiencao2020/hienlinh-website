@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/fade-image";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
@@ -37,7 +37,7 @@ export default async function ProgramsPage() {
                 >
                   <Link
                     href={`/hoat-dong/${program.slug}`}
-                    className="group flex h-full overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                    className="group flex h-full overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-green/15"
                   >
                     <div className="relative w-2/5 shrink-0 overflow-hidden">
                       <Image
@@ -54,7 +54,7 @@ export default async function ProgramsPage() {
                     </div>
                     <div className="flex flex-1 flex-col justify-center gap-2 p-5">
                       <div className="flex items-center gap-3">
-                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-green text-white">
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-green text-white transition-transform duration-300 group-hover:scale-110">
                           <Icon className="h-5 w-5" />
                         </div>
                         <h3 className="font-semibold text-brand-green">{program.name}</h3>
@@ -92,7 +92,7 @@ export default async function ProgramsPage() {
               >
                 <Link
                   href={`/co-so/${facility.slug}`}
-                  className="group block overflow-hidden rounded-2xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-orange/50 hover:shadow-lg"
+                  className="group block overflow-hidden rounded-2xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-lg hover:shadow-brand-green/15"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image

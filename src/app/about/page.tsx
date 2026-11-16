@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/fade-image";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { createPublicClient } from "@/lib/supabase/public";
@@ -87,7 +87,7 @@ export default async function AboutPage() {
           </Reveal>
 
           <Reveal delay={100} className="grid gap-5">
-            <div className="rounded-2xl bg-brand-green/10 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+            <div className="rounded-2xl bg-brand-green/10 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-green/15">
               <div className="flex items-center gap-3">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-brand-green shadow-sm">
                   <UsersIcon className="h-5 w-5" />
@@ -99,7 +99,7 @@ export default async function AboutPage() {
                 thương, và hy vọng; ưu tiên người dễ bị tổn thương.
               </p>
             </div>
-            <div className="rounded-2xl bg-brand-orange/10 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+            <div className="rounded-2xl bg-brand-orange/10 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-green/15">
               <div className="flex items-center gap-3">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-brand-orange shadow-sm">
                   <TargetIcon className="h-5 w-5" />
@@ -147,10 +147,10 @@ export default async function AboutPage() {
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {CORE_VALUES.map((value, i) => (
               <Reveal key={value.vi} delay={i * 80}>
-                <div className="relative h-full overflow-hidden rounded-2xl bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                <div className="group relative h-full overflow-hidden rounded-2xl bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-green/15">
                   <div className="flex items-center gap-3">
                     <div
-                      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full ${value.tint} ${value.text}`}
+                      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110 ${value.tint} ${value.text}`}
                     >
                       <value.Icon className="h-5 w-5" />
                     </div>
@@ -180,7 +180,7 @@ export default async function AboutPage() {
                 <Reveal
                   key={member.id}
                   delay={i * 80}
-                  className="rounded-2xl bg-white p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                  className="rounded-2xl bg-white p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-green/15"
                 >
                   <div className="relative mx-auto h-24 w-24 overflow-hidden rounded-full bg-zinc-100">
                     {member.photo_url && (
