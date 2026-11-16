@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/fade-image";
 import Link from "next/link";
 
 export function PageHero({

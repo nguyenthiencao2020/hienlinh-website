@@ -1,7 +1,7 @@
-import Image from "next/image";
+import Image from "@/components/fade-image";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
-import { createClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/public";
 import type { Partner } from "@/lib/types";
 import { VolunteerForm } from "./volunteer-form";
 import { DonationForm } from "./donation-form";
@@ -9,7 +9,7 @@ import { DonationForm } from "./donation-form";
 export const revalidate = 60;
 
 export default async function JoinPage() {
-  const supabase = await createClient();
+  const supabase = createPublicClient();
   const { data: partners } = await supabase
     .from("partners")
     .select("*")

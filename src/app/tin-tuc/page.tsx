@@ -1,8 +1,8 @@
-import Image from "next/image";
+import Image from "@/components/fade-image";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
-import { createClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/public";
 import type { NewsPost } from "@/lib/types";
 
 export const revalidate = 60;
@@ -26,7 +26,7 @@ export default async function NewsListPage({
   const from = (page - 1) * PAGE_SIZE;
   const to = from + PAGE_SIZE - 1;
 
-  const supabase = await createClient();
+  const supabase = createPublicClient();
   let query = supabase
     .from("news")
     .select("*", { count: "exact" })
@@ -70,7 +70,7 @@ export default async function NewsListPage({
               <Reveal key={post.id} delay={i * 70}>
                 <Link
                   href={`/tin-tuc/${post.slug}`}
-                  className="group block overflow-hidden rounded-xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-orange/50 hover:shadow-xl"
+                  className="group block overflow-hidden rounded-xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-xl hover:shadow-brand-green/15"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden bg-zinc-100">
                     {post.cover_image_url && (

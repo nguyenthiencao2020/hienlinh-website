@@ -1,14 +1,19 @@
-import Image from "next/image";
+import Image from "@/components/fade-image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
-import { createClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/public";
 import { PROGRAM_FALLBACK_IMAGES } from "@/lib/program-images";
 import { FACILITY_FALLBACK_IMAGES } from "@/lib/facility-images";
 import type { Facility, Program } from "@/lib/types";
 
 export const revalidate = 60;
+
+// Không render sẵn lúc build; mỗi slug được render ở lượt truy cập đầu rồi cache (ISR).
+export function generateStaticParams() {
+  return [];
+}
 
 export default async function ProgramPage({
   params,
@@ -16,7 +21,7 @@ export default async function ProgramPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const supabase = await createClient();
+  const supabase = createPublicClient();
   const [{ data: program }, { data: facilities }] = await Promise.all([
     supabase.from("programs").select("*").eq("slug", slug).maybeSingle<Program>(),
     supabase
@@ -43,7 +48,7 @@ export default async function ProgramPage({
           </p>
           <p className="mt-4 text-lg text-zinc-600">{program.summary}</p>
           {program.content && (
-            <div className="prose prose-zinc mt-8 whitespace-pre-wrap text-justify">{program.content}</div>
+            <div className="prose prose-zinc mt-8 max-w-none whitespace-pre-wrap text-justify">{program.content}</div>
           )}
           <Link
             href="/tham-gia"
@@ -64,7 +69,7 @@ export default async function ProgramPage({
               <Reveal key={facility.id} delay={i * 70}>
                 <Link
                   href={`/co-so/${facility.slug}`}
-                  className="group block overflow-hidden rounded-xl border border-zinc-200 transition-all duration-300 hover:-translate-y-1 hover:border-brand-orange/50 hover:shadow-lg"
+                  className="group block overflow-hidden rounded-xl border border-zinc-200 transition-all duration-300 hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-lg hover:shadow-brand-green/15"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image

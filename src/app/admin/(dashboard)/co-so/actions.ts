@@ -37,6 +37,8 @@ export async function createFacility(formData: FormData) {
   }
 
   revalidatePath("/hoat-dong");
+  revalidatePath("/hoat-dong/[slug]", "page");
+  revalidatePath("/co-so/[slug]", "page");
   revalidatePath("/admin/co-so");
   redirect("/admin/co-so");
 }
@@ -54,6 +56,8 @@ export async function updateFacility(id: string, formData: FormData) {
   }
 
   revalidatePath("/hoat-dong");
+  revalidatePath("/hoat-dong/[slug]", "page");
+  revalidatePath("/co-so/[slug]", "page");
   revalidatePath("/admin/co-so");
   redirect("/admin/co-so");
 }
@@ -65,5 +69,7 @@ export async function deleteFacility(id: string) {
     throw new Error(error.message);
   }
   revalidatePath("/hoat-dong");
+  revalidatePath("/hoat-dong/[slug]", "page");
+  revalidatePath("/co-so/[slug]", "page");
   revalidatePath("/admin/co-so");
 }

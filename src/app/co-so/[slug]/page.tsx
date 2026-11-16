@@ -1,13 +1,18 @@
-import Image from "next/image";
+import Image from "@/components/fade-image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
-import { createClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/public";
 import { FACILITY_FALLBACK_IMAGES } from "@/lib/facility-images";
 import type { Facility, Program } from "@/lib/types";
 
 export const revalidate = 60;
+
+// Không render sẵn lúc build; mỗi slug được render ở lượt truy cập đầu rồi cache (ISR).
+export function generateStaticParams() {
+  return [];
+}
 
 export default async function FacilityPage({
   params,
@@ -15,7 +20,7 @@ export default async function FacilityPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const supabase = await createClient();
+  const supabase = createPublicClient();
   const { data: facility } = await supabase
     .from("facilities")
     .select("*")
@@ -45,7 +50,7 @@ export default async function FacilityPage({
         <article>
           {facility.address && <p className="text-sm text-zinc-500">📍 {facility.address}</p>}
           {facility.description ? (
-            <div className="prose prose-zinc mt-4 whitespace-pre-wrap text-justify">{facility.description}</div>
+            <div className="prose prose-zinc mt-4 max-w-none whitespace-pre-wrap text-justify">{facility.description}</div>
           ) : (
             <p className="mt-4 text-zinc-600">Nội dung giới thiệu chi tiết sẽ được cập nhật sau.</p>
           )}

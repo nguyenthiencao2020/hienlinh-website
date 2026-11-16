@@ -1,11 +1,18 @@
-import Image from "next/image";
+import Image from "@/components/fade-image";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
-import { createClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/public";
+import { isRichHtml } from "@/lib/rich-text";
+import { sanitizeRichText } from "@/lib/sanitize-rich-text";
 import type { NewsPost } from "@/lib/types";
 
 export const revalidate = 60;
+
+// Không render sẵn lúc build; mỗi slug được render ở lượt truy cập đầu rồi cache (ISR).
+export function generateStaticParams() {
+  return [];
+}
 
 export default async function NewsDetailPage({
   params,
@@ -13,7 +20,7 @@ export default async function NewsDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const supabase = await createClient();
+  const supabase = createPublicClient();
   const { data: post } = await supabase
     .from("news")
     .select("*")
@@ -48,7 +55,16 @@ export default async function NewsDetailPage({
             </div>
           )}
           <h1 className="mt-6 text-2xl font-bold text-brand-green sm:text-3xl">{post.title}</h1>
-          <div className="prose prose-zinc mt-6 whitespace-pre-wrap text-justify">{post.content}</div>
+          {isRichHtml(post.content) ? (
+            <div
+              className="prose prose-zinc mt-6 max-w-none text-justify prose-headings:text-brand-green prose-a:text-brand-green prose-img:rounded-2xl prose-blockquote:border-brand-green"
+              dangerouslySetInnerHTML={{ __html: sanitizeRichText(post.content) }}
+            />
+          ) : (
+            <div className="prose prose-zinc mt-6 max-w-none whitespace-pre-wrap text-justify">
+              {post.content}
+            </div>
+          )}
         </article>
       </Reveal>
     </div>

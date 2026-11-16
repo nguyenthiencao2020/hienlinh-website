@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
-import { createClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/public";
 import type { Facility, NewsPost, Program } from "@/lib/types";
 
 export const revalidate = 0;
@@ -18,7 +18,7 @@ export default async function SearchPage({
   let news: NewsPost[] = [];
 
   if (query) {
-    const supabase = await createClient();
+    const supabase = createPublicClient();
     const like = `%${query}%`;
     const [programsRes, facilitiesRes, newsRes] = await Promise.all([
       supabase.from("programs").select("*").ilike("name", like).returns<Program[]>(),
