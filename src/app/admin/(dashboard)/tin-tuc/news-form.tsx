@@ -4,6 +4,16 @@ import { ImageUploadField } from "@/components/image-upload-field";
 import { RichTextEditor } from "@/components/rich-text-editor";
 import type { NewsPost } from "@/lib/types";
 
+const NEWS_CATEGORIES = [
+  "Giáo dục",
+  "Y tế",
+  "Lưu trú",
+  "Tâm lý",
+  "Thiện nguyện",
+  "Sự kiện",
+  "Câu chuyện thành công",
+];
+
 export function NewsForm({
   action,
   news,
@@ -11,8 +21,14 @@ export function NewsForm({
   action: (formData: FormData) => void;
   news?: NewsPost;
 }) {
+  // Giữ lại danh mục cũ (gõ tay trước đây) nếu không nằm trong danh sách.
+  const categoryOptions =
+    news?.category && !NEWS_CATEGORIES.includes(news.category)
+      ? [...NEWS_CATEGORIES, news.category]
+      : NEWS_CATEGORIES;
+
   return (
-    <form action={action} className="max-w-3xl space-y-4">
+    <form action={action} className="max-w-4xl space-y-4">
       <div>
         <label className="block text-sm font-medium text-zinc-700">Tiêu đề *</label>
         <input
@@ -34,12 +50,18 @@ export function NewsForm({
       </div>
       <div>
         <label className="block text-sm font-medium text-zinc-700">Danh mục</label>
-        <input
+        <select
           name="category"
           defaultValue={news?.category ?? ""}
-          placeholder="Giáo dục, Y tế, Thiện nguyện..."
-          className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2"
-        />
+          className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2"
+        >
+          <option value="">— Không chọn —</option>
+          {categoryOptions.map((c) => (
+            <option key={c} value={c}>
+              {c}
+            </option>
+          ))}
+        </select>
       </div>
       <ImageUploadField
         name="cover_image_url"
