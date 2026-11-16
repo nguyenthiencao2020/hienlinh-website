@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { createClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/public";
 import { PROGRAM_FALLBACK_IMAGES, PROGRAM_ICONS } from "@/lib/program-images";
 import { LeafIcon } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
@@ -9,7 +9,7 @@ import type { NewsPost, Program } from "@/lib/types";
 export const revalidate = 60;
 
 export default async function Home() {
-  const supabase = await createClient();
+  const supabase = createPublicClient();
 
   const [{ data: programs }, { data: news }] = await Promise.all([
     supabase

@@ -43,6 +43,7 @@ export async function createNews(formData: FormData) {
   }
 
   revalidatePath("/tin-tuc");
+  revalidatePath("/tin-tuc/[slug]", "page");
   revalidatePath("/");
   revalidatePath("/admin/tin-tuc");
   redirect("/admin/tin-tuc");
@@ -73,6 +74,7 @@ export async function updateNews(id: string, formData: FormData) {
   }
 
   revalidatePath("/tin-tuc");
+  revalidatePath("/tin-tuc/[slug]", "page");
   revalidatePath("/");
   revalidatePath("/admin/tin-tuc");
   redirect("/admin/tin-tuc");
@@ -85,6 +87,7 @@ export async function deleteNews(id: string) {
     throw new Error(error.message);
   }
   revalidatePath("/tin-tuc");
+  revalidatePath("/tin-tuc/[slug]", "page");
   revalidatePath("/");
   revalidatePath("/admin/tin-tuc");
 }

@@ -2,10 +2,15 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
-import { createClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/public";
 import type { NewsPost } from "@/lib/types";
 
 export const revalidate = 60;
+
+// Không render sẵn lúc build; mỗi slug được render ở lượt truy cập đầu rồi cache (ISR).
+export function generateStaticParams() {
+  return [];
+}
 
 export default async function NewsDetailPage({
   params,
@@ -13,7 +18,7 @@ export default async function NewsDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const supabase = await createClient();
+  const supabase = createPublicClient();
   const { data: post } = await supabase
     .from("news")
     .select("*")

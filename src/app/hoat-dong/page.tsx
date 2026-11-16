@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
-import { createClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/public";
 import { PROGRAM_FALLBACK_IMAGES, PROGRAM_ICONS } from "@/lib/program-images";
 import { LeafIcon } from "@/components/icons";
 import { FACILITY_FALLBACK_IMAGES } from "@/lib/facility-images";
@@ -11,7 +11,7 @@ import type { Facility, Program } from "@/lib/types";
 export const revalidate = 60;
 
 export default async function ProgramsPage() {
-  const supabase = await createClient();
+  const supabase = createPublicClient();
   const [{ data: programs }, { data: facilities }] = await Promise.all([
     supabase.from("programs").select("*").order("sort_order", { ascending: true }).returns<Program[]>(),
     supabase.from("facilities").select("*").order("sort_order", { ascending: true }).returns<Facility[]>(),

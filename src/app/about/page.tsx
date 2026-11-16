@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
-import { createClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/public";
 import { HandshakeIcon, HeartIcon, ShieldIcon, TargetIcon, UsersIcon } from "@/components/icons";
 import type { TeamMember } from "@/lib/types";
 import type { ComponentType } from "react";
@@ -51,7 +51,7 @@ const CORE_VALUES: {
 ];
 
 export default async function AboutPage() {
-  const supabase = await createClient();
+  const supabase = createPublicClient();
   const { data: team } = await supabase
     .from("team_members")
     .select("*")

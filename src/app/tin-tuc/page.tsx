@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
-import { createClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/public";
 import type { NewsPost } from "@/lib/types";
 
 export const revalidate = 60;
@@ -26,7 +26,7 @@ export default async function NewsListPage({
   const from = (page - 1) * PAGE_SIZE;
   const to = from + PAGE_SIZE - 1;
 
-  const supabase = await createClient();
+  const supabase = createPublicClient();
   let query = supabase
     .from("news")
     .select("*", { count: "exact" })
