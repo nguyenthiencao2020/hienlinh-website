@@ -93,7 +93,7 @@ const TOOLS = [
 export default function HuongDanPage() {
   return (
     <div>
-      <PageHero title="Hướng Dẫn Sử Dụng Trang Quản Trị" crumbLabel="Hướng Dẫn" />
+      <PageHero title="Hướng Dẫn Sử Dụng Trang Quản Trị" crumbs={[{ label: "Hướng Dẫn" }]} />
 
       <div className="mx-auto max-w-3xl px-6 py-16">
         <p className="text-zinc-600">

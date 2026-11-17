@@ -30,3 +30,14 @@ export function parseLocations(raw: string | null | undefined): MapLocation[] {
     return { label, address, url: mapsSearchUrl(query) };
   });
 }
+
+/** Địa chỉ ngắn gọn cho thẻ: 1 cơ sở → nguyên địa chỉ; nhiều cơ sở → "2 cơ sở: Thị Nghè · Tân Bình". */
+export function shortAddress(raw: string | null | undefined): string | undefined {
+  const locations = parseLocations(raw);
+  if (locations.length > 1) {
+    return `${locations.length} cơ sở: ${locations
+      .map((l) => l.address.split(/\s+-\s+/)[0].split(",").pop()!.trim())
+      .join(" · ")}`;
+  }
+  return locations[0]?.address;
+}

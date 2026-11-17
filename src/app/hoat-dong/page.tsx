@@ -8,6 +8,8 @@ import { LeafIcon } from "@/components/icons";
 import { FacilityCard } from "@/components/facility-card";
 import type { Facility, Program } from "@/lib/types";
 
+export const metadata = { title: "Lĩnh Vực Hoạt Động" };
+
 export const revalidate = 60;
 
 export default async function ProgramsPage() {
@@ -19,7 +21,7 @@ export default async function ProgramsPage() {
 
   return (
     <div>
-      <PageHero title="Lĩnh Vực Hoạt Động" crumbLabel="Hoạt Động" />
+      <PageHero title="Lĩnh Vực Hoạt Động" crumbs={[{ label: "Lĩnh Vực Hoạt Động" }]} />
 
       <section className="px-6 py-16">
         <div className="mx-auto max-w-6xl">

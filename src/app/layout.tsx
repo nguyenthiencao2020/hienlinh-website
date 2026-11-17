@@ -6,7 +6,10 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
-  title: "DNXH Hiển Linh — Nơi ánh sáng chạm trái tim",
+  title: {
+    default: "DNXH Hiển Linh — Nơi ánh sáng chạm trái tim",
+    template: "%s | DNXH Hiển Linh",
+  },
   description:
     "Doanh Nghiệp Xã Hội Hiển Linh đồng hành cùng người yếu thế qua Giáo dục, Y tế, Lưu trú, Tâm lý và các hoạt động thiện nguyện.",
 };

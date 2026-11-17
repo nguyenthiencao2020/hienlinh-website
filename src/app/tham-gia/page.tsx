@@ -6,6 +6,8 @@ import type { Partner } from "@/lib/types";
 import { VolunteerForm } from "./volunteer-form";
 import { DonationForm } from "./donation-form";
 
+export const metadata = { title: "Tham Gia" };
+
 export const revalidate = 60;
 
 export default async function JoinPage() {
@@ -21,7 +23,7 @@ export default async function JoinPage() {
       <PageHero
         title="Tham Gia Cùng Chúng Tôi"
         subtitle="Cùng chúng tôi thắp sáng hy vọng"
-        crumbLabel="Tham Gia"
+        crumbs={[{ label: "Tham Gia" }]}
       />
 
       <section className="bg-brand-cream px-6 py-14">

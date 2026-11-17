@@ -2,7 +2,7 @@ import Image from "@/components/fade-image";
 import Link from "next/link";
 import { MapPinIcon } from "@/components/icons";
 import { FACILITY_FALLBACK_IMAGES } from "@/lib/facility-images";
-import { parseLocations } from "@/lib/maps";
+import { shortAddress } from "@/lib/maps";
 import type { Facility } from "@/lib/types";
 
 export function facilityCover(f: Facility) {
@@ -12,14 +12,7 @@ export function facilityCover(f: Facility) {
 // Thẻ cơ sở dùng chung cho mọi trang: ảnh phủ kín, tên + địa chỉ đặt trên ảnh
 // nên mọi thẻ luôn cao bằng nhau dù có hay không có địa chỉ.
 export function FacilityCard({ facility, programName }: { facility: Facility; programName?: string }) {
-  const locations = parseLocations(facility.address);
-  // Nhiều cơ sở: chỉ hiện khu vực của từng nơi, VD "2 cơ sở: Thị Nghè · Tân Bình".
-  const addressLine =
-    locations.length > 1
-      ? `${locations.length} cơ sở: ${locations
-          .map((l) => l.address.split(/\s+-\s+/)[0].split(",").pop()!.trim())
-          .join(" · ")}`
-      : locations[0]?.address;
+  const addressLine = shortAddress(facility.address);
   return (
     <Link
       href={`/co-so/${facility.slug}`}

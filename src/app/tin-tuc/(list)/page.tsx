@@ -5,6 +5,8 @@ import { Reveal } from "@/components/reveal";
 import { createPublicClient } from "@/lib/supabase/public";
 import type { NewsPost } from "@/lib/types";
 
+export const metadata = { title: "Tin Tức & Sự Kiện" };
+
 export const revalidate = 60;
 
 const PAGE_SIZE = 6;
@@ -45,7 +47,7 @@ export default async function NewsListPage({
 
   return (
     <div>
-      <PageHero title="Tin Tức & Sự Kiện" crumbLabel="Tin Tức" />
+      <PageHero title="Tin Tức & Sự Kiện" crumbs={[{ label: "Tin Tức" }]} />
 
       <section className="px-6 py-16">
         <div className="mx-auto max-w-6xl">

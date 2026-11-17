@@ -1,15 +1,15 @@
 import Image from "@/components/fade-image";
-import Link from "next/link";
+import { Breadcrumbs, type Crumb } from "@/components/breadcrumbs";
 
 export function PageHero({
   title,
   subtitle,
-  crumbLabel,
+  crumbs,
   imageSrc = "/images/hero-page.webp",
 }: {
   title: string;
   subtitle?: string;
-  crumbLabel: string;
+  crumbs: Crumb[];
   imageSrc?: string;
 }) {
   return (
@@ -30,15 +30,10 @@ export function PageHero({
             {subtitle}
           </p>
         )}
-        <p
+        <Breadcrumbs
+          items={crumbs}
           className="reveal is-visible mt-4 text-sm text-white/80"
-          style={{ animationDelay: "220ms" }}
-        >
-          <Link href="/" className="hover:underline">
-            Trang Chủ
-          </Link>{" "}
-          / {crumbLabel}
-        </p>
+        />
       </div>
     </div>
   );
