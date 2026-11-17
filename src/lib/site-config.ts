@@ -4,7 +4,7 @@ export const SITE = {
   tagline: "Tổ chức DNXH Hiển Linh",
   // Theo Giấy chứng nhận đăng ký doanh nghiệp (MSDN 0319198731).
   address: "106/11-106/11A Nguyễn Hồng, Phường Bình Lợi Trung, TP. Hồ Chí Minh",
-  phone: "0901 234 567",
+  phone: "0388 478 772",
   email: "contact@hienlinh-fmm.org",
   website: "hienlinh-fmm.org",
   // Điền link thật khi có — link nào để trống sẽ không hiển thị trên web.
