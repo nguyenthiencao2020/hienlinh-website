@@ -4,8 +4,8 @@ import { notFound } from "next/navigation";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { createPublicClient } from "@/lib/supabase/public";
-import { PROGRAM_FALLBACK_IMAGES, PROGRAM_ICONS } from "@/lib/program-images";
-import { LeafIcon } from "@/components/icons";
+import { PROGRAM_FALLBACK_IMAGES } from "@/lib/program-images";
+import { ProgramLinks } from "@/components/program-links";
 import { FacilityCard } from "@/components/facility-card";
 import type { Facility, Program } from "@/lib/types";
 
@@ -69,7 +69,7 @@ export default async function ProgramPage({
             <div className="prose prose-zinc mt-8 max-w-none whitespace-pre-wrap text-justify">{program.content}</div>
           )}
           <Link
-            href="/tham-gia"
+            href={`/tham-gia?linh-vuc=${program.slug}`}
             className="mt-8 inline-block rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-brand-orange-dark hover:shadow-lg"
           >
             Đồng hành cùng chương trình này →
@@ -100,25 +100,7 @@ export default async function ProgramPage({
               <p className="text-sm font-semibold uppercase tracking-wide text-brand-brown">Hệ sinh thái Hiển Linh</p>
               <h2 className="mt-2 text-2xl font-bold text-brand-green">Các lĩnh vực khác</h2>
             </Reveal>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              {otherPrograms.map((p, i) => {
-                const Icon = PROGRAM_ICONS[p.slug] ?? LeafIcon;
-                return (
-                  <Reveal key={p.id} delay={i * 60} className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)]">
-                    <Link
-                      href={`/hoat-dong/${p.slug}`}
-                      className="group flex h-full items-center gap-3 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-black/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-green/15"
-                    >
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-green text-white transition-transform duration-300 group-hover:scale-110">
-                        <Icon className="h-5 w-5" />
-                      </span>
-                      <span className="flex-1 font-semibold text-brand-green">{p.name}</span>
-                      <span className="text-brand-green transition-transform duration-300 group-hover:translate-x-1">→</span>
-                    </Link>
-                  </Reveal>
-                );
-              })}
-            </div>
+            <ProgramLinks programs={otherPrograms} />
           </div>
         </section>
       )}

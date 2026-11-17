@@ -3,8 +3,9 @@ import Image from "@/components/fade-image";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { createPublicClient } from "@/lib/supabase/public";
+import { ProgramLinks } from "@/components/program-links";
 import { HandshakeIcon, HeartIcon, ShieldIcon, TargetIcon, UsersIcon } from "@/components/icons";
-import type { TeamMember } from "@/lib/types";
+import type { Program, TeamMember } from "@/lib/types";
 import type { ComponentType } from "react";
 
 export const metadata = { title: "Về Chúng Tôi" };
@@ -55,11 +56,14 @@ const CORE_VALUES: {
 
 export default async function AboutPage() {
   const supabase = createPublicClient();
-  const { data: team } = await supabase
-    .from("team_members")
-    .select("*")
-    .order("sort_order", { ascending: true })
-    .returns<TeamMember[]>();
+  const [{ data: team }, { data: programs }] = await Promise.all([
+    supabase.from("team_members").select("*").order("sort_order", { ascending: true }).returns<TeamMember[]>(),
+    supabase
+      .from("programs")
+      .select("id, slug, name")
+      .order("sort_order", { ascending: true })
+      .returns<Pick<Program, "id" | "slug" | "name">[]>(),
+  ]);
 
   return (
     <div>
@@ -72,7 +76,7 @@ export default async function AboutPage() {
               — Về chúng tôi
             </p>
             <h2 className="mt-2 text-2xl font-bold text-brand-green">Câu Chuyện Của Chúng Tôi</h2>
-            <p className="mt-4 text-sm text-zinc-600">
+            <p className="mt-4 text-justify text-sm leading-relaxed text-zinc-600">
               Khởi đi từ tinh thần lắng nghe những dấu chỉ của thời đại, chúng
               tôi nhận ra rằng có rất nhiều người cần một môi trường an toàn để
               được phát triển toàn diện. Tại môi trường này, không chỉ cần
@@ -80,7 +84,7 @@ export default async function AboutPage() {
               hướng đi bền vững của một tổ chức, cung cấp dịch vụ chuyên
               nghiệp và minh bạch.
             </p>
-            <p className="mt-4 text-sm text-zinc-600">
+            <p className="mt-4 text-justify text-sm leading-relaxed text-zinc-600">
               Vì thế, lấy tinh thần Kitô giáo làm nền tảng, DNXH Hiển Linh hình
               thành hầu kết nối các lĩnh vực Giáo dục, Y tế, Tâm lý và Lưu trú;
               tạo nên một hệ sinh thái nhằm đồng hành toàn diện với con người,
@@ -104,7 +108,7 @@ export default async function AboutPage() {
                 </div>
                 <h2 className="text-xl font-bold text-brand-green">Tầm Nhìn</h2>
               </div>
-              <p className="mt-3 text-sm text-zinc-600">
+              <p className="mt-3 text-justify text-sm leading-relaxed text-zinc-600">
                 Một xã hội nơi mỗi người đều được sống trong phẩm giá, tình
                 thương, và hy vọng; ưu tiên người dễ bị tổn thương.
               </p>
@@ -116,7 +120,7 @@ export default async function AboutPage() {
                 </div>
                 <h2 className="text-xl font-bold text-brand-green">Sứ Mệnh</h2>
               </div>
-              <p className="mt-2 text-sm text-zinc-600">
+              <p className="mt-3 text-justify text-sm leading-relaxed text-zinc-600">
                 DNXH Hiển Linh lan tỏa tinh thần FMM qua giáo dục, đồng hành,
                 chăm sóc toàn diện cho trẻ em, người trẻ; đặc biệt người dễ bị
                 tổn thương — thông qua hệ sinh thái Giáo dục, Y tế, Tâm lý và
@@ -150,9 +154,10 @@ export default async function AboutPage() {
       <section className="bg-brand-cream px-6 py-16">
         <div className="mx-auto max-w-6xl">
           <Reveal>
-            <h2 className="text-center text-2xl font-bold text-brand-green">
-              Giá Trị Cốt Lõi
-            </h2>
+            <div className="text-center">
+              <p className="text-sm font-semibold uppercase tracking-wide text-brand-brown">Nền tảng của chúng tôi</p>
+              <h2 className="mt-2 text-2xl font-bold text-brand-green">Giá Trị Cốt Lõi</h2>
+            </div>
           </Reveal>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {CORE_VALUES.map((value, i) => (
@@ -169,7 +174,7 @@ export default async function AboutPage() {
                       <p className="text-xs italic uppercase tracking-wide text-brand-brown">{value.en}</p>
                     </div>
                   </div>
-                  <p className="mt-3 text-sm text-zinc-600">{value.desc}</p>
+                  <p className="mt-3 text-justify text-sm leading-relaxed text-zinc-600">{value.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -177,20 +182,31 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-brand-cream px-6 py-16">
+      <section className="px-6 py-16">
+        <div className="mx-auto max-w-6xl">
+          <Reveal className="text-center">
+            <p className="text-sm font-semibold uppercase tracking-wide text-brand-brown">— Các lĩnh vực hoạt động cốt lõi</p>
+            <h2 className="mt-2 text-2xl font-bold text-brand-green">Hệ Sinh Thái Hiển Linh</h2>
+          </Reveal>
+          <ProgramLinks programs={programs ?? []} />
+        </div>
+      </section>
+
+      {!!team?.length && (
+      <section className="px-6 py-16">
         <div className="mx-auto max-w-6xl">
           <Reveal>
-            <h2 className="text-center text-2xl font-bold text-brand-green">
-              Đội Ngũ Của Chúng Tôi
-            </h2>
+            <div className="text-center">
+              <p className="text-sm font-semibold uppercase tracking-wide text-brand-brown">Con người Hiển Linh</p>
+              <h2 className="mt-2 text-2xl font-bold text-brand-green">Đội Ngũ Của Chúng Tôi</h2>
+            </div>
           </Reveal>
-          {team?.length ? (
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {team.map((member, i) => (
                 <Reveal
                   key={member.id}
                   delay={i * 80}
-                  className="rounded-2xl bg-white p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-green/15"
+                  className="rounded-2xl bg-white p-6 text-center shadow-sm ring-1 ring-black/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-green/15"
                 >
                   <div className="relative mx-auto h-24 w-24 overflow-hidden rounded-full bg-zinc-100">
                     {member.photo_url && (
@@ -209,13 +225,9 @@ export default async function AboutPage() {
                 </Reveal>
               ))}
             </div>
-          ) : (
-            <p className="mt-6 text-center text-sm text-zinc-500">
-              Thông tin đội ngũ sẽ được cập nhật sau.
-            </p>
-          )}
         </div>
       </section>
+      )}
     </div>
   );
 }

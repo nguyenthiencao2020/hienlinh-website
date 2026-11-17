@@ -249,7 +249,7 @@ export default async function FacilityPage({
                 )}
                 <div className="space-y-2.5 border-t border-zinc-100 pt-5">
                   <Link
-                    href="/tham-gia"
+                    href={program ? `/tham-gia?linh-vuc=${program.slug}` : "/tham-gia"}
                     className="flex w-full items-center justify-center gap-2 rounded-full bg-brand-orange px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-brand-orange-dark hover:shadow-lg hover:shadow-brand-orange/30"
                   >
                     <HeartIcon className="h-4 w-4" />
