@@ -17,7 +17,7 @@ import {
 const SOCIALS = [
   { href: SITE.socials.facebook, label: "Facebook", Icon: FacebookIcon },
   { href: SITE.socials.youtube, label: "YouTube", Icon: YoutubeIcon },
-];
+].filter((s) => s.href);
 
 export function SiteFooter() {
   return (
@@ -48,6 +48,7 @@ export function SiteFooter() {
             Hiển Linh là nơi kết nối những tấm lòng thiện nguyện để cùng nhau lan
             tỏa yêu thương và tạo nên tác động tích cực bền vững.
           </p>
+          {SOCIALS.length > 0 && (
           <div className="mt-5 flex gap-3">
             {SOCIALS.map(({ href, label, Icon }) => (
               <a
@@ -60,6 +61,7 @@ export function SiteFooter() {
               </a>
             ))}
           </div>
+          )}
         </div>
 
         <div>
