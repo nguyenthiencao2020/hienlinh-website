@@ -1,7 +1,6 @@
 export const SITE = {
   name: "Hiển Linh",
   fullName: "Doanh Nghiệp Xã Hội Hiển Linh",
-  tagline: "Tổ chức DNXH Hiển Linh",
   // Theo Giấy chứng nhận đăng ký doanh nghiệp (MSDN 0319198731).
   address: "106/11-106/11A Nguyễn Hồng, Phường Bình Lợi Trung, TP. Hồ Chí Minh",
   phone: "0388 478 772",

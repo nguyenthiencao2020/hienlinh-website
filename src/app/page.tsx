@@ -115,18 +115,20 @@ export default async function Home() {
       {/* Section 3: Hệ sinh thái */}
       <section className="bg-brand-cream px-6 py-20">
         <div className="mx-auto max-w-7xl">
-          <Reveal className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
+          <Reveal className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
+            <div className="shrink-0">
               <p className="text-sm font-semibold uppercase tracking-wide text-brand-brown">
-                — Hoạt động của chúng tôi
+                — Các lĩnh vực hoạt động cốt lõi
               </p>
               <h2 className="mt-2 text-3xl font-bold text-brand-green">
-                Các Lĩnh Vực Hoạt Động
+                Hệ Sinh Thái Hiển Linh
               </h2>
             </div>
-            <p className="max-w-sm text-sm text-zinc-600 sm:text-right">
-              Chúng tôi tập trung vào 5 lĩnh vực chính, nhằm đồng hành cùng trẻ
-              em và cộng đồng trên hành trình phát triển bền vững.
+            <p className="max-w-2xl text-sm text-zinc-600">
+              Mỗi hoạt động là một điểm chạm yêu thương - đồng hành - nâng đỡ.
+              Thông qua giáo dục, y tế, hỗ trợ tâm lý, và các hoạt động xã hội và
+              thiện nguyện, Hiển Linh mang tinh thần FMM, đồng hành cùng anh chị
+              em đồng loại bằng những hành động cụ thể, thiết thực và bền vững.
             </p>
           </Reveal>
           <div className="mt-10 flex flex-wrap justify-center gap-6">

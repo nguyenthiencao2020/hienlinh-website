@@ -72,11 +72,11 @@ create policy "authenticated users update messages" on public.contact_messages
 
 -- Seed 5 mảng hoạt động cốt lõi
 insert into public.programs (slug, name, summary, sort_order) values
-  ('giao-duc', 'Giáo dục', 'Đồng hành giáo dục cho trẻ em và người trẻ.', 1),
-  ('y-te', 'Y tế', 'Chăm sóc y tế cho người yếu thế.', 2),
-  ('luu-tru', 'Lưu trú', 'Mái ấm, nội trú cho trẻ em và người cần nơi ở an toàn.', 3),
-  ('tam-ly', 'Tâm lý', 'Hỗ trợ tâm lý, lắng nghe và đồng hành.', 4),
-  ('thien-nguyen', 'Các hoạt động thiện nguyện', 'Các hoạt động thiện nguyện và kết nối cộng đồng.', 5)
+  ('giao-duc', 'Giáo dục', 'Kiến tạo cơ hội học tập bình đẳng và toàn diện cho thế hệ trẻ cùng những mảnh đời kém may mắn.', 1),
+  ('y-te', 'Y tế', 'Đồng hành cùng anh chị em tại các vùng sâu, vùng xa, nơi còn hạn chế về kiến thức chăm sóc và bảo vệ sức khỏe.', 2),
+  ('luu-tru', 'Lưu trú', 'Nơi ở an toàn cho các em nữ đồng bào vùng miền núi đến trường và các em nữ từ các tỉnh lên Sài Gòn học tập.', 3),
+  ('tam-ly', 'Tâm lý', 'Trung Tâm Chữa Lành FMM — phục vụ Chữa Lành Toàn Diện: Tâm - Trí - Linh.', 4),
+  ('thien-nguyen', 'Các hoạt động thiện nguyện', 'Không đơn thuần là sự sẻ chia vật chất, mà là sự hiện diện của tình thân, sự nâng đỡ và thấu hiểu chân thành.', 5)
 on conflict (slug) do nothing;
 
 -- Storage bucket cho ảnh/video nội dung
