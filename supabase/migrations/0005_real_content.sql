@@ -34,7 +34,7 @@ where slug = 'thien-nguyen';
 
 -- Phòng khám Hy Vọng: địa chỉ + mô tả thật (từ tài liệu + bảng hiệu thực tế)
 update public.facilities set
-  address = 'Số 86, Đường 64, Ấp Giồng Sao 2, Xã Tân Phú Trung, Huyện Củ Chi, TP.HCM',
+  address = 'Số 86, Đường 64, Ấp Giòng Sao, Xã Tân Phú Trung, Huyện Củ Chi, TP.HCM',
   description = $desc$Với khát vọng đi đến, đồng hành và sẻ chia với những anh chị em đang đau khổ, dễ bị tổn thương và sống bên lề xã hội, Phòng Khám Hy Vọng từng bước được hình thành và xây dựng, trở thành một nơi chăm sóc sức khỏe dành cho những người nghèo và có hoàn cảnh khó khăn.
 
 Công trình được khởi công năm 2010 và đến tháng 8 năm 2015, ngôi nhà khang trang chính thức hoàn thành, chính thức đi vào hoạt động dưới tên Phòng Chẩn Trị Y Học Cổ Truyền Từ Thiện - Hy Vọng, mở rộng cánh cửa đón tiếp những người bệnh nghèo, đặc biệt là những anh chị em di dân từ nhiều tỉnh thành.
