@@ -6,10 +6,10 @@ export const SITE = {
   phone: "0901 234 567",
   email: "contact@hienlinh-fmm.org",
   website: "hienlinh-fmm.org",
+  // Điền link thật khi có — link nào để trống sẽ không hiển thị trên web.
   socials: {
-    facebook: "https://facebook.com/hienlinh",
-    youtube: "https://youtube.com/@hienlinh",
-    zalo: "https://zalo.me/hienlinh",
+    facebook: "",
+    youtube: "",
   },
 };
 

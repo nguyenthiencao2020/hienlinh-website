@@ -71,16 +71,6 @@ export function YoutubeIcon({ className }: { className?: string }) {
   );
 }
 
-export function ZaloIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-      <text x="12" y="16" textAnchor="middle" fontSize="10" fontWeight="700" fill="currentColor">
-        Z
-      </text>
-    </svg>
-  );
-}
-
 export function SearchIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">

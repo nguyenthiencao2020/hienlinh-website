@@ -3,6 +3,11 @@ import { Reveal } from "@/components/reveal";
 import { SITE } from "@/lib/site-config";
 import { ContactForm } from "./contact-form";
 
+const socials = [
+  { href: SITE.socials.facebook, label: "Facebook" },
+  { href: SITE.socials.youtube, label: "YouTube" },
+].filter((s) => s.href);
+
 export default function ContactPage() {
   const mapQuery = encodeURIComponent(SITE.address);
 
@@ -19,11 +24,19 @@ export default function ContactPage() {
               <li>Điện thoại: {SITE.phone}</li>
               <li>Email: {SITE.email}</li>
             </ul>
-            <p className="mt-4 text-sm text-zinc-600">
-              Mạng xã hội:{" "}
-              <a href={SITE.socials.facebook} className="text-brand-orange hover:underline">Facebook</a>,{" "}
-              <a href={SITE.socials.youtube} className="text-brand-orange hover:underline">YouTube</a>
-            </p>
+            {socials.length > 0 && (
+              <p className="mt-4 text-sm text-zinc-600">
+                Mạng xã hội:{" "}
+                {socials.map(({ href, label }, i) => (
+                  <span key={label}>
+                    {i > 0 && ", "}
+                    <a href={href} className="text-brand-orange hover:underline">
+                      {label}
+                    </a>
+                  </span>
+                ))}
+              </p>
+            )}
           </Reveal>
           <Reveal delay={150} className="rounded-2xl border border-zinc-200 p-6 transition-shadow duration-300 hover:shadow-lg">
             <h2 className="text-lg font-bold text-brand-green">Gửi Tin Nhắn Cho Chúng Tôi</h2>
