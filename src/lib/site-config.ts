@@ -2,7 +2,8 @@ export const SITE = {
   name: "Hiển Linh",
   fullName: "Doanh Nghiệp Xã Hội Hiển Linh",
   tagline: "Tổ chức DNXH Hiển Linh",
-  address: "Số 15, Đường Xanh, P. An Lạc, Q. Bình Tân, TP. Hồ Chí Minh",
+  // Theo Giấy chứng nhận đăng ký doanh nghiệp (MSDN 0319198731).
+  address: "106/11-106/11A Nguyễn Hồng, Phường Bình Lợi Trung, TP. Hồ Chí Minh",
   phone: "0901 234 567",
   email: "contact@hienlinh-fmm.org",
   website: "hienlinh-fmm.org",
