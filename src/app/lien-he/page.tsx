@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
-import { FacebookIcon, LeafIcon, MailIcon, MapPinIcon, PhoneIcon, SendIcon, YoutubeIcon } from "@/components/icons";
+import { FacebookIcon, MailIcon, MapPinIcon, PhoneIcon, SendIcon, YoutubeIcon } from "@/components/icons";
 import { createPublicClient } from "@/lib/supabase/public";
-import { mapsSearchUrl, shortAddress } from "@/lib/maps";
-import { PROGRAM_ICONS } from "@/lib/program-images";
+import { mapsSearchUrl } from "@/lib/maps";
+import { FacilityCard } from "@/components/facility-card";
 import { SITE } from "@/lib/site-config";
 import type { Facility, Program } from "@/lib/types";
 import { ContactForm } from "./contact-form";
@@ -54,29 +54,32 @@ export default async function ContactPage() {
     <div>
       <PageHero title="Liên Hệ" crumbs={[{ label: "Liên Hệ" }]} />
 
-      {/* Kênh liên hệ */}
-      <section className="relative z-10 -mt-12 px-6">
-        <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-3">
-          {CHANNELS.map(({ Icon, label, value, href, action, external }, i) => (
-            <Reveal key={label} delay={i * 80}>
+      {/* Kênh liên hệ: một dải thống nhất, 3 cột */}
+      <section className="relative z-10 -mt-10 px-6">
+        <Reveal className="mx-auto block max-w-6xl">
+          <div className="grid overflow-hidden rounded-2xl bg-white shadow-xl shadow-zinc-900/10 ring-1 ring-zinc-200/70 md:grid-cols-3 md:divide-x md:divide-zinc-100 max-md:divide-y max-md:divide-zinc-100">
+            {CHANNELS.map(({ Icon, label, value, href, action, external }) => (
               <a
+                key={label}
                 href={href}
                 {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="group flex h-full flex-col rounded-2xl bg-white p-6 shadow-lg shadow-zinc-900/5 ring-1 ring-zinc-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-green/15"
+                className="group flex items-center gap-4 px-6 py-5 transition-colors duration-300 hover:bg-brand-cream/60"
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-green text-white transition-transform duration-300 group-hover:scale-110">
-                  <Icon className="h-6 w-6" />
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-green/10 text-brand-green transition-all duration-300 group-hover:bg-brand-green group-hover:text-white">
+                  <Icon className="h-5 w-5" />
                 </span>
-                <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-brand-brown">{label}</p>
-                <p className="mt-1 flex-1 font-semibold text-zinc-800">{value}</p>
-                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-orange">
-                  {action}
-                  <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-xs font-medium uppercase tracking-wide text-zinc-400">{label}</span>
+                  <span className="mt-0.5 block text-[15px] font-semibold leading-snug text-zinc-800">{value}</span>
+                  <span className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-brand-orange">
+                    {action}
+                    <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  </span>
                 </span>
               </a>
-            </Reveal>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Reveal>
       </section>
 
       {/* Form + bản đồ */}
@@ -147,30 +150,12 @@ export default async function ContactPage() {
                 Xem tất cả →
               </Link>
             </Reveal>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              {facilities.map((f, i) => {
-                const program = programOf(f);
-                const Icon = (program && PROGRAM_ICONS[program.slug]) || LeafIcon;
-                const addr = shortAddress(f.address);
-                return (
-                  <Reveal key={f.id} delay={(i % 3) * 60} className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]">
-                    <Link
-                      href={`/co-so/${f.slug}`}
-                      className="group flex h-full items-start gap-3 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-black/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-green/15"
-                    >
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-green/10 text-brand-green transition-colors duration-300 group-hover:bg-brand-green group-hover:text-white">
-                        <Icon className="h-5 w-5" />
-                      </span>
-                      <span className="min-w-0 flex-1">
-                        <span className="block font-semibold text-brand-green">{f.name}</span>
-                        {program && <span className="block text-xs text-brand-brown">{program.name}</span>}
-                        {addr && <span className="mt-1 block line-clamp-1 text-sm text-zinc-500">{addr}</span>}
-                      </span>
-                      <span className="self-center text-brand-green transition-transform duration-300 group-hover:translate-x-1">→</span>
-                    </Link>
-                  </Reveal>
-                );
-              })}
+            <div className="mt-8 flex flex-wrap justify-center gap-6">
+              {facilities.map((f, i) => (
+                <Reveal key={f.id} delay={(i % 3) * 60} className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+                  <FacilityCard facility={f} programName={programOf(f)?.name} />
+                </Reveal>
+              ))}
             </div>
           </div>
         </section>
