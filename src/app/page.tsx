@@ -4,6 +4,7 @@ import { createPublicClient } from "@/lib/supabase/public";
 import { PROGRAM_FALLBACK_IMAGES, PROGRAM_ICONS } from "@/lib/program-images";
 import { LeafIcon } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
+import { NewsCard } from "@/components/news-card";
 import type { NewsPost, Program } from "@/lib/types";
 
 export const revalidate = 60;
@@ -210,35 +211,19 @@ export default async function Home() {
       {/* Section 5: Tin tức */}
       <section className="px-6 py-20">
         <div className="mx-auto max-w-7xl">
-          <Reveal className="flex items-end justify-between">
-            <h2 className="text-3xl font-bold text-brand-green">Tin tức &amp; Hoạt động</h2>
-            <Link href="/tin-tuc" className="text-sm font-medium text-brand-orange hover:underline">
+          <Reveal className="flex items-end justify-between gap-4">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-brand-brown">Cập nhật mới</p>
+              <h2 className="mt-2 text-3xl font-bold text-brand-green">Tin tức &amp; Hoạt động</h2>
+            </div>
+            <Link href="/tin-tuc" className="shrink-0 text-sm font-medium text-brand-green hover:underline">
               Xem tất cả →
             </Link>
           </Reveal>
-          <div className="mt-8 grid gap-6 sm:grid-cols-3">
+          <div className="mt-8 flex flex-wrap justify-center gap-6">
             {(news ?? []).map((post, i) => (
-              <Reveal key={post.id} delay={i * 80}>
-                <Link
-                  href={`/tin-tuc/${post.slug}`}
-                  className="group block overflow-hidden rounded-xl border border-zinc-200 transition-all duration-300 hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-xl hover:shadow-brand-green/15"
-                >
-                  {post.cover_image_url && (
-                    <div className="relative aspect-[16/10] overflow-hidden">
-                      <Image
-                        src={post.cover_image_url}
-                        alt={post.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                        sizes="(min-width: 640px) 33vw, 100vw"
-                      />
-                    </div>
-                  )}
-                  <div className="p-5">
-                    <h3 className="font-semibold text-brand-green">{post.title}</h3>
-                    <p className="mt-2 text-sm text-zinc-600 line-clamp-3">{post.excerpt}</p>
-                  </div>
-                </Link>
+              <Reveal key={post.id} delay={i * 80} className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+                <NewsCard post={post} />
               </Reveal>
             ))}
             {!news?.length && (
