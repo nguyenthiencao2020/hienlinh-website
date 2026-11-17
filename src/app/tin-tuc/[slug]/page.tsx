@@ -3,6 +3,7 @@ import Image from "@/components/fade-image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/page-hero";
+import { NewsCard, formatDate } from "@/components/news-card";
 import { Reveal } from "@/components/reveal";
 import { createPublicClient } from "@/lib/supabase/public";
 import { isRichHtml } from "@/lib/rich-text";
@@ -76,7 +77,7 @@ export default async function NewsDetailPage({
               </span>
             )}
             {post.published_at && (
-              <span>{new Date(post.published_at).toLocaleDateString("vi-VN")}</span>
+              <span>{formatDate(post.published_at)}</span>
             )}
           </div>
           {post.cover_image_url && (
@@ -118,25 +119,7 @@ export default async function NewsDetailPage({
             <div className="mt-8 flex flex-wrap justify-center gap-6">
               {related.map((n, i) => (
                 <Reveal key={n.id} delay={i * 80} className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
-                  <Link
-                    href={`/tin-tuc/${n.slug}`}
-                    className="group block h-full overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-green/15"
-                  >
-                    <div className="relative aspect-[16/10] overflow-hidden bg-zinc-100">
-                      <Image
-                        src={n.cover_image_url || "/images/hero-page.webp"}
-                        alt={n.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      />
-                    </div>
-                    <div className="p-5">
-                      {n.category && <p className="text-xs font-semibold uppercase tracking-wide text-brand-brown">{n.category}</p>}
-                      <p className="mt-1 line-clamp-2 font-semibold text-brand-green">{n.title}</p>
-                      <p className="mt-2 line-clamp-2 text-sm text-zinc-600">{n.excerpt}</p>
-                    </div>
-                  </Link>
+                  <NewsCard post={n} />
                 </Reveal>
               ))}
             </div>

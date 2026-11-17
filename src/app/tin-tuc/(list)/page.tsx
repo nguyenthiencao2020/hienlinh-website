@@ -1,4 +1,4 @@
-import Image from "@/components/fade-image";
+import { NewsCard, NewsFeatureCard } from "@/components/news-card";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
@@ -44,6 +44,18 @@ export default async function NewsListPage({
 
   const { data: news, count } = await query.returns<NewsPost[]>();
   const totalPages = Math.max(1, Math.ceil((count ?? 0) / PAGE_SIZE));
+  // Trang đầu của mục "Tin Tức Mới Nhất": bài mới nhất hiển thị lớn.
+  const showFeature = page === 1 && !activeTab && (news?.length ?? 0) > 1;
+  const feature = showFeature ? news![0] : null;
+  const rest = (showFeature ? news!.slice(1) : news) ?? [];
+
+  const pageHref = (p: number) => {
+    const q = new URLSearchParams();
+    if (activeTab) q.set("loai", activeTab);
+    if (p > 1) q.set("page", String(p));
+    const qs = q.toString();
+    return qs ? `/tin-tuc?${qs}` : "/tin-tuc";
+  };
 
   return (
     <div>
@@ -67,63 +79,57 @@ export default async function NewsListPage({
             ))}
           </div>
 
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {(news ?? []).map((post, i) => (
-              <Reveal key={post.id} delay={i * 70}>
-                <Link
-                  href={`/tin-tuc/${post.slug}`}
-                  className="group block overflow-hidden rounded-xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-xl hover:shadow-brand-green/15"
-                >
-                  <div className="relative aspect-[16/10] overflow-hidden bg-zinc-100">
-                    {post.cover_image_url && (
-                      <Image
-                        src={post.cover_image_url}
-                        alt={post.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      />
-                    )}
-                  </div>
-                  <div className="p-5">
-                    {post.published_at && (
-                      <p className="text-xs text-zinc-500">
-                        {new Date(post.published_at).toLocaleDateString("vi-VN")}
-                      </p>
-                    )}
-                    <h2 className="mt-1 text-lg font-semibold text-brand-green">
-                      {post.title}
-                    </h2>
-                    <p className="mt-2 text-sm text-zinc-600 line-clamp-2">{post.excerpt}</p>
-                    <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-brand-orange">
-                      Đọc tiếp
-                      <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                    </span>
-                  </div>
-                </Link>
+          {feature && (
+            <Reveal className="mt-8 block">
+              <NewsFeatureCard post={feature} />
+            </Reveal>
+          )}
+
+          <div className="mt-8 flex flex-wrap justify-center gap-6">
+            {rest.map((post, i) => (
+              <Reveal key={post.id} delay={(i % 3) * 70} className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+                <NewsCard post={post} />
               </Reveal>
             ))}
-            {!news?.length && (
-              <p className="text-sm text-zinc-500">Chưa có bài viết nào được đăng.</p>
-            )}
           </div>
+          {!news?.length && (
+            <div className="mt-8 rounded-2xl border border-dashed border-zinc-300 bg-zinc-50 px-6 py-12 text-center text-zinc-500">
+              {activeTab ? "Chưa có bài viết nào trong mục này." : "Chưa có bài viết nào được đăng."}
+              {activeTab && (
+                <Link href="/tin-tuc" className="mt-2 block text-sm font-semibold text-brand-green hover:underline">
+                  Xem tất cả tin tức →
+                </Link>
+              )}
+            </div>
+          )}
 
           {totalPages > 1 && (
-            <div className="mt-10 flex justify-center gap-2 text-sm">
+            <nav aria-label="Phân trang" className="mt-10 flex flex-wrap items-center justify-center gap-2 text-sm">
+              {page > 1 && (
+                <Link href={pageHref(page - 1)} className="rounded-full border border-zinc-200 px-4 py-1.5 text-zinc-600 transition-colors hover:border-brand-orange/50">
+                  ← Trước
+                </Link>
+              )}
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
                 <Link
                   key={p}
-                  href={`/tin-tuc?page=${p}${activeTab ? `&loai=${activeTab}` : ""}`}
-                  className={`rounded-full px-3 py-1.5 transition-all duration-300 ${
+                  href={pageHref(p)}
+                  aria-current={p === page ? "page" : undefined}
+                  className={`flex h-9 min-w-9 items-center justify-center rounded-full px-3 transition-all duration-300 ${
                     p === page
                       ? "bg-brand-orange text-white"
-                      : "border border-zinc-200 text-zinc-600 hover:scale-105 hover:border-brand-orange/50"
+                      : "border border-zinc-200 text-zinc-600 hover:border-brand-orange/50"
                   }`}
                 >
                   {p}
                 </Link>
               ))}
-            </div>
+              {page < totalPages && (
+                <Link href={pageHref(page + 1)} className="rounded-full border border-zinc-200 px-4 py-1.5 text-zinc-600 transition-colors hover:border-brand-orange/50">
+                  Sau →
+                </Link>
+              )}
+            </nav>
           )}
         </div>
       </section>
