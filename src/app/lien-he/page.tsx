@@ -156,17 +156,19 @@ export default async function ContactPage() {
                   <Reveal key={f.id} delay={(i % 3) * 60} className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]">
                     <Link
                       href={`/co-so/${f.slug}`}
-                      className="group flex h-full items-start gap-3 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-black/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-green/15"
+                      className="group flex h-full items-center gap-3 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-black/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-green/15"
                     >
                       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-green/10 text-brand-green transition-colors duration-300 group-hover:bg-brand-green group-hover:text-white">
                         <Icon className="h-5 w-5" />
                       </span>
                       <span className="min-w-0 flex-1">
-                        <span className="block font-semibold text-brand-green">{f.name}</span>
+                        <span className="block truncate font-semibold text-brand-green">{f.name}</span>
                         {program && <span className="block text-xs text-brand-brown">{program.name}</span>}
-                        {addr && <span className="mt-1 block line-clamp-1 text-sm text-zinc-500">{addr}</span>}
+                        <span className={`mt-1 block truncate text-sm ${addr ? "text-zinc-500" : "italic text-zinc-400"}`} title={addr}>
+                          {addr ?? "Địa chỉ đang cập nhật"}
+                        </span>
                       </span>
-                      <span className="self-center text-brand-green transition-transform duration-300 group-hover:translate-x-1">→</span>
+                      <span className="shrink-0 text-brand-green transition-transform duration-300 group-hover:translate-x-1">→</span>
                     </Link>
                   </Reveal>
                 );
