@@ -1,11 +1,16 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { useSearchParams } from "next/navigation";
 import { submitVolunteer } from "./actions";
+import { INPUT_CLASS, SUBMIT_CLASS, SUCCESS_CLASS } from "@/lib/form-styles";
 
-const AREAS = ["Giáo dục", "Y tế", "Lưu trú", "Tâm lý", "Thiện nguyện", "Khác"];
+export type AreaOption = { slug: string; name: string };
 
-export function VolunteerForm() {
+export function VolunteerForm({ areas }: { areas: AreaOption[] }) {
+  // Đến từ trang lĩnh vực/cơ sở (?linh-vuc=y-te) thì chọn sẵn lĩnh vực đó.
+  const searchParams = useSearchParams();
+  const preset = areas.find((a) => a.slug === searchParams.get("linh-vuc"))?.name ?? "";
   const [isPending, startTransition] = useTransition();
   const [state, setState] = useState<"idle" | "success" | "error">("idle");
   const [error, setError] = useState("");
@@ -23,57 +28,28 @@ export function VolunteerForm() {
   }
 
   if (state === "success") {
-    return (
-      <div className="rounded-xl border border-green-200 bg-green-50 p-6 text-green-800">
-        Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ lại sớm nhất.
-      </div>
-    );
+    return <div className={SUCCESS_CLASS}>Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ lại sớm nhất.</div>;
   }
 
   return (
     <form action={handleSubmit} className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
-        <input
-          name="full_name"
-          required
-          placeholder="Họ và tên *"
-          className="rounded-lg border border-zinc-300 px-3 py-2"
-        />
-        <input
-          name="email"
-          type="email"
-          required
-          placeholder="Email *"
-          className="rounded-lg border border-zinc-300 px-3 py-2"
-        />
+        <input name="full_name" required placeholder="Họ và tên *" autoComplete="name" className={INPUT_CLASS} />
+        <input name="phone" type="tel" required placeholder="Điện thoại *" autoComplete="tel" pattern="[0-9 +().-]{8,}" title="Số điện thoại gồm ít nhất 8 chữ số" className={INPUT_CLASS} />
       </div>
-      <input
-        name="phone"
-        required
-        placeholder="Điện thoại *"
-        className="w-full rounded-lg border border-zinc-300 px-3 py-2"
-      />
-      <select
-        name="interest"
-        defaultValue=""
-        className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-zinc-700"
-      >
-        <option value="" disabled>
-          Chọn lĩnh vực bạn quan tâm
-        </option>
-        {AREAS.map((area) => (
-          <option key={area} value={area}>
-            {area}
+      <input name="email" type="email" required placeholder="Email *" autoComplete="email" className={INPUT_CLASS} />
+      <select key={preset} name="interest" defaultValue={preset} className={INPUT_CLASS}>
+        <option value="">Chọn lĩnh vực bạn quan tâm</option>
+        {areas.map((a) => (
+          <option key={a.slug} value={a.name}>
+            {a.name}
           </option>
         ))}
+        <option value="Khác">Khác</option>
       </select>
       {state === "error" && <p className="text-sm text-red-600">{error}</p>}
-      <button
-        type="submit"
-        disabled={isPending}
-        className="rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-brand-orange-dark hover:shadow-lg disabled:opacity-60 disabled:hover:scale-100"
-      >
-        {isPending ? "Đang gửi..." : "Đăng ký ngay"}
+      <button type="submit" disabled={isPending} className={SUBMIT_CLASS}>
+        {isPending ? "Đang gửi..." : "Đăng ký tình nguyện"}
       </button>
     </form>
   );

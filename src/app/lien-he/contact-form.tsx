@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { submitContactMessage } from "./actions";
+import { INPUT_CLASS, SUBMIT_CLASS, SUCCESS_CLASS } from "@/lib/form-styles";
 
 export function ContactForm() {
   const [isPending, startTransition] = useTransition();
@@ -22,7 +23,7 @@ export function ContactForm() {
 
   if (result === "success") {
     return (
-      <div className="rounded-xl border border-green-200 bg-green-50 p-6 text-green-800">
+      <div className={SUCCESS_CLASS}>
         Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất có thể.
       </div>
     );
@@ -35,34 +36,34 @@ export function ContactForm() {
           name="full_name"
           required
           placeholder="Họ và tên *"
-          className="rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm outline-none transition focus:border-brand-green focus:bg-white focus:ring-2 focus:ring-brand-green/15"
+          className={INPUT_CLASS}
         />
         <input
           name="email"
           type="email"
           required
           placeholder="Email *"
-          className="rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm outline-none transition focus:border-brand-green focus:bg-white focus:ring-2 focus:ring-brand-green/15"
+          className={INPUT_CLASS}
         />
       </div>
       <input
         name="subject"
         required
         placeholder="Tiêu đề *"
-        className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm outline-none transition focus:border-brand-green focus:bg-white focus:ring-2 focus:ring-brand-green/15"
+        className={INPUT_CLASS}
       />
       <textarea
         name="message"
         rows={6}
         required
         placeholder="Nội dung tin nhắn *"
-        className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm outline-none transition focus:border-brand-green focus:bg-white focus:ring-2 focus:ring-brand-green/15"
+        className={INPUT_CLASS}
       />
       {result === "error" && <p className="text-sm text-red-600">{errorMessage}</p>}
       <button
         type="submit"
         disabled={isPending}
-        className="inline-flex items-center gap-2 rounded-full bg-brand-orange px-7 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-brand-orange-dark hover:shadow-lg disabled:opacity-60 disabled:hover:scale-100"
+        className={SUBMIT_CLASS}
       >
         {isPending ? "Đang gửi..." : "Gửi tin nhắn"}
       </button>

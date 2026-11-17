@@ -69,7 +69,7 @@ export default async function ProgramPage({
             <div className="prose prose-zinc mt-8 max-w-none whitespace-pre-wrap text-justify">{program.content}</div>
           )}
           <Link
-            href="/tham-gia"
+            href={`/tham-gia?linh-vuc=${program.slug}`}
             className="mt-8 inline-block rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-brand-orange-dark hover:shadow-lg"
           >
             Đồng hành cùng chương trình này →
