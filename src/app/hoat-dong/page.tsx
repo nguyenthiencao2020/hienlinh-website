@@ -5,7 +5,7 @@ import { Reveal } from "@/components/reveal";
 import { createPublicClient } from "@/lib/supabase/public";
 import { PROGRAM_FALLBACK_IMAGES, PROGRAM_ICONS } from "@/lib/program-images";
 import { LeafIcon } from "@/components/icons";
-import { FACILITY_FALLBACK_IMAGES } from "@/lib/facility-images";
+import { FacilityCard } from "@/components/facility-card";
 import type { Facility, Program } from "@/lib/types";
 
 export const revalidate = 60;
@@ -26,7 +26,7 @@ export default async function ProgramsPage() {
           <Reveal>
             <h2 className="text-xl font-bold text-brand-green">Các lĩnh vực hoạt động</h2>
           </Reveal>
-          <div className="mt-6 flex flex-wrap justify-center gap-6">
+          <div className="mt-8 flex flex-wrap justify-center gap-6">
             {(programs ?? []).map((program, i) => {
               const Icon = PROGRAM_ICONS[program.slug] ?? LeafIcon;
               return (
@@ -81,34 +81,20 @@ export default async function ProgramsPage() {
       <section className="bg-brand-cream px-6 py-16">
         <div className="mx-auto max-w-6xl">
           <Reveal>
-            <h2 className="text-xl font-bold text-brand-green">Các cơ sở của chúng tôi</h2>
+            <p className="text-sm font-semibold uppercase tracking-wide text-brand-brown">Hệ thống cơ sở</p>
+            <h2 className="mt-2 text-2xl font-bold text-brand-green">Các cơ sở của chúng tôi</h2>
           </Reveal>
-          <div className="mt-6 flex flex-wrap justify-center gap-6">
+          <div className="mt-8 flex flex-wrap justify-center gap-6">
             {(facilities ?? []).map((facility, i) => (
               <Reveal
                 key={facility.id}
                 delay={i * 60}
                 className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
               >
-                <Link
-                  href={`/co-so/${facility.slug}`}
-                  className="group block overflow-hidden rounded-2xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-green/30 hover:shadow-lg hover:shadow-brand-green/15"
-                >
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={
-                        facility.cover_image_url ||
-                        FACILITY_FALLBACK_IMAGES[facility.slug] ||
-                        "/images/hero-page.webp"
-                      }
-                      alt={facility.name}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    />
-                  </div>
-                  <p className="p-4 text-sm font-semibold text-brand-green">{facility.name}</p>
-                </Link>
+                <FacilityCard
+                  facility={facility}
+                  programName={programs?.find((p) => p.slug === facility.program_slug)?.name}
+                />
               </Reveal>
             ))}
             {!facilities?.length && (
