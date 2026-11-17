@@ -1,6 +1,8 @@
+import type { Metadata } from "next";
 import Image from "@/components/fade-image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Reveal } from "@/components/reveal";
 import { HeartIcon, LeafIcon, MapPinIcon } from "@/components/icons";
 import { createPublicClient } from "@/lib/supabase/public";
@@ -10,6 +12,21 @@ import { PROGRAM_FALLBACK_IMAGES, PROGRAM_ICONS } from "@/lib/program-images";
 import type { Facility, Program } from "@/lib/types";
 
 export const revalidate = 60;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const { data } = await createPublicClient()
+    .from("facilities")
+    .select("name, description")
+    .eq("slug", slug)
+    .maybeSingle<{ name: string; description: string | null }>();
+  if (!data) return {};
+  return { title: data.name, description: data.description?.slice(0, 160) || undefined };
+}
 
 // Không render sẵn lúc build; mỗi slug được render ở lượt truy cập đầu rồi cache (ISR).
 export function generateStaticParams() {
@@ -70,12 +87,14 @@ export default async function FacilityPage({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/10" />
         <div className="relative mx-auto w-full max-w-6xl px-6 pb-12 pt-28 text-white">
-          <p className="reveal is-visible text-sm text-white/75">
-            <Link href="/" className="hover:underline">Trang Chủ</Link>
-            {" / "}
-            <Link href="/hoat-dong" className="hover:underline">Lĩnh Vực Hoạt Động</Link>
-            {" / Cơ sở"}
-          </p>
+          <Breadcrumbs
+            className="reveal is-visible text-sm text-white/75"
+            items={[
+              { label: "Lĩnh Vực Hoạt Động", href: "/hoat-dong" },
+              ...(program ? [{ label: program.name, href: `/hoat-dong/${program.slug}` }] : []),
+              { label: facility.name },
+            ]}
+          />
           {program && (
             <Link
               href={`/hoat-dong/${program.slug}`}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "@/components/fade-image";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
@@ -5,6 +6,8 @@ import { createPublicClient } from "@/lib/supabase/public";
 import { HandshakeIcon, HeartIcon, ShieldIcon, TargetIcon, UsersIcon } from "@/components/icons";
 import type { TeamMember } from "@/lib/types";
 import type { ComponentType } from "react";
+
+export const metadata = { title: "Về Chúng Tôi" };
 
 export const revalidate = 60;
 
@@ -60,7 +63,7 @@ export default async function AboutPage() {
 
   return (
     <div>
-      <PageHero title="Về Chúng Tôi" crumbLabel="Giới Thiệu" />
+      <PageHero title="Về Chúng Tôi" crumbs={[{ label: "Về Chúng Tôi" }]} />
 
       <section className="overflow-hidden px-6 py-16">
         <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_1.1fr_0.9fr] lg:items-center">
@@ -68,7 +71,7 @@ export default async function AboutPage() {
             <p className="text-sm font-semibold uppercase tracking-wide text-brand-brown">
               — Về chúng tôi
             </p>
-            <h1 className="mt-2 text-2xl font-bold text-brand-green">Câu Chuyện Của Chúng Tôi</h1>
+            <h2 className="mt-2 text-2xl font-bold text-brand-green">Câu Chuyện Của Chúng Tôi</h2>
             <p className="mt-4 text-sm text-zinc-600">
               Khởi đi từ tinh thần lắng nghe những dấu chỉ của thời đại, chúng
               tôi nhận ra rằng có rất nhiều người cần một môi trường an toàn để
@@ -84,6 +87,13 @@ export default async function AboutPage() {
               ưu tiên phục vụ trẻ em, người trẻ và những người dễ bị tổn
               thương đang ở bên lề xã hội.
             </p>
+            <Link
+              href="/hoat-dong"
+              className="group mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-green hover:underline"
+            >
+              Xem các lĩnh vực hoạt động
+              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </Link>
           </Reveal>
 
           <Reveal delay={100} className="grid gap-5">

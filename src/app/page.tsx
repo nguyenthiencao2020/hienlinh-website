@@ -58,7 +58,7 @@ export default async function Home() {
               style={{ animationDelay: "300ms" }}
             >
               <Link
-                href="/about"
+                href="/hoat-dong"
                 className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-green transition-all duration-300 hover:scale-105 hover:bg-zinc-100 hover:shadow-lg"
               >
                 Khám phá thêm
@@ -102,10 +102,10 @@ export default async function Home() {
               sống.
             </p>
             <Link
-              href="/hoat-dong"
+              href="/about"
               className="group mt-6 inline-flex items-center gap-1.5 rounded-full bg-brand-green px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-brand-green-dark hover:shadow-lg"
             >
-              Khám phá thêm
+              Tìm hiểu thêm
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </Link>
           </Reveal>

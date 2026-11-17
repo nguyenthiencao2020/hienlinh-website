@@ -3,6 +3,8 @@ import { PageHero } from "@/components/page-hero";
 import { createPublicClient } from "@/lib/supabase/public";
 import type { Facility, NewsPost, Program } from "@/lib/types";
 
+export const metadata = { title: "Tìm Kiếm" };
+
 export const revalidate = 0;
 
 export default async function SearchPage({
@@ -39,7 +41,7 @@ export default async function SearchPage({
 
   return (
     <div>
-      <PageHero title="Tìm Kiếm" crumbLabel="Tìm Kiếm" />
+      <PageHero title="Tìm Kiếm" crumbs={[{ label: "Tìm Kiếm" }]} />
 
       <section className="px-6 py-16">
         <div className="mx-auto max-w-3xl">
